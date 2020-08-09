@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1597003541 source:c:\users\jeany\documents\archivosc++\proy1edd\main.cpp
+	<iostream>
+	<string>
+	<stdlib.h>
+
