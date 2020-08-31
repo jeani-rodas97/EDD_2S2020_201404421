@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1597027700 source:c:\users\jeany\documents\archivosc++\proy1edd\main.cpp
+1597028289 source:c:\users\jeany\documents\archivosc++\proy1edd\main.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
+	"Menu.h"
 
 1597028251 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
 	"Menu.h"
@@ -11,4 +12,39 @@
 	<stdlib.h>
 
 1597028251 c:\users\jeany\documents\archivosc++\proy1edd\menu.h
+
+1598770834 source:c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.cpp
+	"NodoMDisp.h"
+
+1598770769 c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.h
+	<string>
+	"ObjetoM.h"
+
+1598329704 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+	"LeerJson.h"
+	<iostream>
+	<fstream>
+	<string>
+
+1597106792 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
+	<string>
+
+1598851881 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
+	"MatrizDisp.h"
+
+1598851881 c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.h
+	"ListaCab.h"
+	"ObjetoM.h"
+
+1598770227 source:c:\users\jeany\documents\archivosc++\proy1edd\objetom.cpp
+	"ObjetoM.h"
+
+1598768747 c:\users\jeany\documents\archivosc++\proy1edd\objetom.h
+	<string>
+
+1598852060 source:c:\users\jeany\documents\archivosc++\proy1edd\listacab.cpp
+	"ListaCab.h"
+
+1598851881 c:\users\jeany\documents\archivosc++\proy1edd\listacab.h
+	"NodoMDisp.h"
 

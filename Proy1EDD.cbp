@@ -32,8 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="LeerJson.cpp" />
+		<Unit filename="LeerJson.h" />
+		<Unit filename="ListaCab.cpp" />
+		<Unit filename="ListaCab.h" />
+		<Unit filename="MatrizDisp.cpp" />
+		<Unit filename="MatrizDisp.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="NodoMDisp.cpp" />
+		<Unit filename="NodoMDisp.h" />
+		<Unit filename="ObjetoM.cpp" />
+		<Unit filename="ObjetoM.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
