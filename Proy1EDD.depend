@@ -24,7 +24,7 @@
 	<string>
 	"ObjetoM.h"
 
-1599958255 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1599979383 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
@@ -141,10 +141,10 @@
 
 1599720478 c:\users\jeany\documents\archivosc++\proy1edd\nodoavl.h
 
-1599720478 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.cpp
+1599979351 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.cpp
 	"ArbolAVL.h"
 
-1599720478 c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.h
+1599979351 c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.h
 	"NodoAVL.h"
 	<iostream>
 	<string>

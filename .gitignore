@@ -30,11 +30,6 @@
 *.exe
 *.out
 *.app
-.vscode
-.scannerwork
-*.dot
-*.png
-*.jpg
 
 json-forwards.h
 json.h

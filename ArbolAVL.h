@@ -13,7 +13,7 @@ class ArbolAVL
         ArbolAVL();
         NodoAVL *getRaiz();
         void setRaiz(NodoAVL *root);
-        NodoAVL *InsertarEnAVL(NodoAVL *raiz, int Valor, bool &AlturaMayor);
+        NodoAVL *InsertarEnAVL(NodoAVL *raiz, int Valor, bool &AlturaEsMayor);
 
 
 
@@ -21,10 +21,10 @@ class ArbolAVL
 
     private:
         NodoAVL *Raiz;
-        NodoAVL *RotDerIzq(NodoAVL *Padre, NodoAVL *Hijo);
-        NodoAVL *RotDerDer(NodoAVL *Padre, NodoAVL *Hijo);
-        NodoAVL *RotIzqDer(NodoAVL *Padre, NodoAVL *Hijo);
-        NodoAVL *RotIzqIzq(NodoAVL *Padre, NodoAVL *Hijo);
+        NodoAVL *RotDerIzq(NodoAVL *a, NodoAVL *b);
+        NodoAVL *RotDerDer(NodoAVL *a, NodoAVL *b);
+        NodoAVL *RotIzqDer(NodoAVL *a, NodoAVL *b);
+        NodoAVL *RotIzqIzq(NodoAVL *a, NodoAVL *b);
 
 };
 

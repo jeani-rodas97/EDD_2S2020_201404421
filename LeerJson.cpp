@@ -40,6 +40,8 @@ void LeerJson::RecibirArchivo()
         for (int j = 0; j < nivel.size(); j++)
         {
             cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
+            cout << metodo.ConvertirAscci(nivel[j]["nivel"].asString()) << endl;
+            ///Aqui voy a insertar el nombre al arbol
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
             {
