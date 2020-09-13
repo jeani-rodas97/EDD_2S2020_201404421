@@ -5,36 +5,46 @@
 	<stdlib.h>
 	"Menu.h"
 
-1597028251 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
+1599691659 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
 	"Menu.h"
 	<iostream>
 	<string>
 	<stdlib.h>
+	"MatrizDisp.h"
+	"ObjetoM.h"
+	"Metodos.h"
+	"LeerJson.h"
 
 1597028251 c:\users\jeany\documents\archivosc++\proy1edd\menu.h
 
-1598770834 source:c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.cpp
+1599110351 source:c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.cpp
 	"NodoMDisp.h"
 
-1598770769 c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.h
+1599110351 c:\users\jeany\documents\archivosc++\proy1edd\nodomdisp.h
 	<string>
 	"ObjetoM.h"
 
-1598329704 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1599958255 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
 	<string>
+	"Metodos.h"
+	"json\json.h"
+	"jsoncpp.cpp"
 
-1597106792 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
+1599882026 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
 	<string>
 
-1598851881 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
+1599544026 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
 	"MatrizDisp.h"
+	<iostream>
+	<string>
 
-1598851881 c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.h
+1599107452 c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.h
 	"ListaCab.h"
 	"ObjetoM.h"
+	"string"
 
 1598770227 source:c:\users\jeany\documents\archivosc++\proy1edd\objetom.cpp
 	"ObjetoM.h"
@@ -42,9 +52,100 @@
 1598768747 c:\users\jeany\documents\archivosc++\proy1edd\objetom.h
 	<string>
 
-1598852060 source:c:\users\jeany\documents\archivosc++\proy1edd\listacab.cpp
+1599112307 source:c:\users\jeany\documents\archivosc++\proy1edd\listacab.cpp
 	"ListaCab.h"
 
-1598851881 c:\users\jeany\documents\archivosc++\proy1edd\listacab.h
+1599112307 c:\users\jeany\documents\archivosc++\proy1edd\listacab.h
 	"NodoMDisp.h"
+
+1599291561 source:c:\users\jeany\documents\archivosc++\proy1edd\metodos.cpp
+	"Metodos.h"
+	<string>
+
+1599291349 c:\users\jeany\documents\archivosc++\proy1edd\metodos.h
+	<string>
+
+1599587942 c:\users\jeany\documents\archivosc++\proy1edd\json\json.h
+	<cpptl/config.h>
+	"config.h"
+	"forwards.h"
+	"forwards.h"
+	<string>
+	<vector>
+	<exception>
+	<map>
+	<cpptl/smallmap.h>
+	<cpptl/forwards.h>
+	"features.h"
+	"value.h"
+	<deque>
+	<iosfwd>
+	<stack>
+	<string>
+	<istream>
+	"value.h"
+	<vector>
+	<string>
+	<ostream>
+	<stdlib.h>
+	<sstream>
+	"config.h"
+
+1599587942 c:\users\jeany\documents\archivosc++\proy1edd\jsoncpp.cpp
+	"json/json.h"
+	<json/assertions.h>
+	<json/reader.h>
+	<json/value.h>
+	"json_tool.h"
+	<utility>
+	<cstdio>
+	<cassert>
+	<cstring>
+	<istream>
+	<sstream>
+	<memory>
+	<set>
+	<limits>
+	<stdio.h>
+	<json/assertions.h>
+	<json/value.h>
+	<json/writer.h>
+	<math.h>
+	<sstream>
+	<utility>
+	<cstring>
+	<cassert>
+	<cpptl/conststring.h>
+	<cstddef>
+	<algorithm>
+	<mem.h>
+	"json_valueiterator.inl"
+	<json/writer.h>
+	"json_tool.h"
+	<iomanip>
+	<memory>
+	<sstream>
+	<utility>
+	<set>
+	<cassert>
+	<cstring>
+	<cstdio>
+	<stdio.h>
+	<float.h>
+	<ieeefp.h>
+	<cmath>
+	<float.h>
+
+1599719034 source:c:\users\jeany\documents\archivosc++\proy1edd\nodoavl.cpp
+	"NodoAVL.h"
+
+1599720478 c:\users\jeany\documents\archivosc++\proy1edd\nodoavl.h
+
+1599720478 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.cpp
+	"ArbolAVL.h"
+
+1599720478 c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.h
+	"NodoAVL.h"
+	<iostream>
+	<string>
 

@@ -21,6 +21,7 @@ class NodoMDisp
         NodoMDisp(int cabecera);
         int getPX();
         int getPY();
+        ObjetoM *getObj();
 
     protected:
 

@@ -2,21 +2,50 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-//#include <json.h>
-//#include <jsoncpp / json / json.h>
-//#include <jsoncpp\json\json.h>
-//#include <jsoncpp\json.h>
-//#include <json\json.h>
-//#include "json/json.h"
+#include "Metodos.h"
+//
+#include "json\json.h"
+#include "jsoncpp.cpp"
+
+
+//#include <json/json.h>
+//#include <jsoncpp/json/json.h>
+//#include <jsoncpp/json/json.h>
 //#include "json.h"//Tira error
-
-//#include <boost/algorithm/string.hpp>
-
-
 
 using namespace std;
 
-LeerJson::LeerJson(string ruta)
+LeerJson::LeerJson()
 {
 
+}
+void LeerJson::RecibirArchivo()
+{
+    ///C:\\Users\\Jeany\\Downloads\\Proy.json   Para que funcione, colocar sin comilas y doble slash inverso
+    Metodos metodo;
+    char rutJson[100];
+    Json::Value dato;
+    Json::Reader ReadJson;
+    cout << "Ingrese la ruta de ubicacion ";
+    cin >> rutJson;
+    ifstream ArchJson(rutJson, ifstream::binary);
+    //cout << "Abre el archivo" << endl;
+    ReadJson.parse(ArchJson, dato);
+    //cout << dato["proyectos"] << endl; /// En dato esta todo el archivo+;
+    const Json::Value& proy = dato["proyectos"]; // array of characters
+    for (int i = 0; i < proy.size(); i++)
+    {
+        cout << "Nombre: " << proy[i]["nombre"].asString() << endl;
+        const Json::Value& nivel = proy[i]["niveles"];
+        for (int j = 0; j < nivel.size(); j++)
+        {
+            cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
+            const Json::Value& paredes = nivel[j]["paredes"];
+            for (int k = 0; k < paredes.size(); k++)
+            {
+                cout << "color: " << paredes[k]["color"].asString() << endl;
+                //const Json::Value& paredes = paredes[k]["paredes"];
+            }
+        }
+    }
 }

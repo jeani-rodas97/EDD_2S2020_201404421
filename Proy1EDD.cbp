@@ -14,6 +14,9 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library='&quot;C:/Users/Jeany/Downloads/jsoncpp-0.y.z/jsoncpp-0.y.z/dist/json/json.h&quot;' />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Proy1EDD" prefix_auto="1" extension_auto="1" />
@@ -32,6 +35,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArbolAVL.cpp" />
+		<Unit filename="ArbolAVL.h" />
 		<Unit filename="LeerJson.cpp" />
 		<Unit filename="LeerJson.h" />
 		<Unit filename="ListaCab.cpp" />
@@ -40,6 +45,10 @@
 		<Unit filename="MatrizDisp.h" />
 		<Unit filename="Menu.cpp" />
 		<Unit filename="Menu.h" />
+		<Unit filename="Metodos.cpp" />
+		<Unit filename="Metodos.h" />
+		<Unit filename="NodoAVL.cpp" />
+		<Unit filename="NodoAVL.h" />
 		<Unit filename="NodoMDisp.cpp" />
 		<Unit filename="NodoMDisp.h" />
 		<Unit filename="ObjetoM.cpp" />

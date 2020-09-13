@@ -46,7 +46,7 @@ void ListaCab::InsertarEnmedio(NodoMDisp *nuevo)
             return;
         }
     }
-    ultimo->sigNC = temp;
+    ultimo->sigNC = nuevo;
     nuevo->antNC = ultimo;
     ultimo = nuevo;
 }
@@ -76,4 +76,14 @@ NodoMDisp* ListaCab::Encontrar(int indice)
         aux = aux->sigNC;
     }
     return 0;
+}
+
+NodoMDisp* ListaCab::getInicio()
+{
+    return inicio;
+}
+
+NodoMDisp* ListaCab::getUltimo()
+{
+    return ultimo;
 }

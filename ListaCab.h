@@ -11,6 +11,8 @@ class ListaCab
         void InsertarEnmedio(NodoMDisp *nuevo);
         void Insertar(int indice);
         NodoMDisp *Encontrar(int indice);
+        NodoMDisp *getInicio();
+        NodoMDisp *getUltimo();
 
     protected:
 

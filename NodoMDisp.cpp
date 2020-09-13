@@ -28,3 +28,8 @@ int NodoMDisp::getPY()
 {
     return CabY;
 }
+
+ObjetoM* NodoMDisp::getObj()
+{
+    return obj;
+}
