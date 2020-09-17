@@ -1,7 +1,9 @@
 #include "MatrizDisp.h"
 #include <iostream>
-
+#include <fstream>
+#include "Metodos.h"
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -41,8 +43,11 @@ void MatrizDisp::InsertarObj(ObjetoM *objNuevo, int x, int y)
     }
 }
 
-string MatrizDisp::ArchivoDot()
+void MatrizDisp::GraficarMatriz()
 {
+    Metodos metodo;
+    ofstream GrafMatriz;
+    int indiceX, indiceY, contador;
     string X;
     string Y;
     string CoordeenadasCol;
@@ -51,19 +56,50 @@ string MatrizDisp::ArchivoDot()
     NodoMDisp *Fila = this->HorizontalX->getInicio();
     NodoMDisp *Columna = this->VerticalY->getInicio();
     NodoMDisp *TempX = Fila->abajoN;
-
+    NodoMDisp *TempY = Columna->sigN;
+    NodoMDisp *Actual;
+    ///Dibujando las cabeceras de las filas
+    indiceX = Fila->getPX();
+    contador = 1;
+    dot += "0" + metodo.ConvtirIntString(indiceX) + " [label = \""+ metodo.ConvtirIntString(indiceX) + "\" pos = \"0,-" + metodo.ConvtirIntString(indiceX) + "!\"]";
+    while (TempX != 0)
+    {
+        indiceX = TempX->getPX();
+        dot += "0" + metodo.ConvtirIntString(indiceX) + " [label = \""+ metodo.ConvtirIntString(indiceX) + "\" pos = \"0,-" + metodo.ConvtirIntString(contador) + "!\"]";
+        contador++;
+        TempX = TempX->abajoN;
+    }
+    ///Dibujando las cabeceras de las columnas
+    indiceY = Columna->getPY();
+    contador = 1;
+    dot += metodo.ConvtirIntString(indiceY) + "0" + " [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(contador) + ",0!\"]";
+    while (TempY != 0)
+    {
+        indiceY = TempY->getPY();
+        dot += metodo.ConvtirIntString(indiceY) + "0" + " [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(contador) + ",0!\"]";
+        contador++;
+        TempY = TempY->sigN;
+    }
+    ///Dibujando los nodos
+    /*TempY = Columna;
     while (Columna != 0)
     {
-        NodoMDisp *TempY = Columna->sigN;
-        while(TempY != 0)
+        while(Fila != 0)
         {
+            if (TempY->abajoN)
             X = Columna->getPX();
             Y = Columna->getPY();
             CoordeenadasCol = X + Y;
                             ///10 [label = "C(1,0)" pos = "1,0!"]
             dot += CoordeenadasCol + " [label = \"" + Columna->getObj()->getLetra() + "\" pos = \"" ;
         }
-    }
+    }*/
+    dot += "}";
+
+    GrafMatriz.open("GrafoMatriz.txt", ios::out);
+    GrafMatriz << dot;
+    GrafMatriz.close();
+    system("neato GrafoMatriz.txt -Tpng -o matriz.png");
 }
 
     /*

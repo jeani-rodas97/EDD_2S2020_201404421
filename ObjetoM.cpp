@@ -1,12 +1,18 @@
 #include "ObjetoM.h"
 
-ObjetoM::ObjetoM(int nivel, char letra, string color, int x, int y)
+ObjetoM::ObjetoM(int id, int nivel, char letra, string color, int x, int y)
 {
+    this->idAVL = id;
     this->nivel = nivel;
     this->letra = letra;
     this->color = color;
     this->x = x;
     this->y = y;
+}
+
+int ObjetoM::getId()
+{
+    return this->idAVL;
 }
 
 int ObjetoM::getNivel()
@@ -32,6 +38,11 @@ int ObjetoM::getX()
 int ObjetoM::getY()
 {
     return this->y;
+}
+
+void ObjetoM::setId(int id)
+{
+    this->idAVL = id;
 }
 
 void ObjetoM::setNivel(int nivel)

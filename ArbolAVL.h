@@ -13,18 +13,22 @@ class ArbolAVL
         ArbolAVL();
         NodoAVL *getRaiz();
         void setRaiz(NodoAVL *root);
-        NodoAVL *InsertarEnAVL(NodoAVL *raiz, int Valor, bool &AlturaEsMayor);
-
-
+        void NuevoNodo(int numero, string cadena);
+        void GraficarArbol(NodoAVL *padre);
+        void inorden(NodoAVL *padre);
 
     protected:
 
     private:
         NodoAVL *Raiz;
+        NodoAVL *InsertarEnAVL(NodoAVL *raiz, int Valor, string Nombre, bool &AlturaEsMayor);
         NodoAVL *RotDerIzq(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotDerDer(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotIzqDer(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotIzqIzq(NodoAVL *a, NodoAVL *b);
+        string Recorrer(NodoAVL *padre);
+        void orden(NodoAVL *padre);
+
 
 };
 

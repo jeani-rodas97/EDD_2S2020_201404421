@@ -1,8 +1,9 @@
 #include "NodoAVL.h"
 
-NodoAVL::NodoAVL(int Info)
+NodoAVL::NodoAVL(int Info, string Nombre)
 {
     this->Info = Info;
+    this->Nombre = Nombre;
     this->HijoDerecho = 0;
     this->HijoIzquierdo = 0;
     this->FactorEquilibrio = 0;
@@ -12,6 +13,11 @@ NodoAVL::NodoAVL(int Info)
 int NodoAVL::getInfo()
 {
     return Info;
+}
+
+string NodoAVL::getNombre()
+{
+    return Nombre;
 }
 
 NodoAVL* NodoAVL::getRamaIzq()

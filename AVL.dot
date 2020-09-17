@@ -1,0 +1,6 @@
+digraph arbolAVL{ 
+ rankdir=TB; 
+ label = "AVL" 
+ node [shape = circle, style=filled, color="#F76B11", fillcolor= "#F7C4F5" ]; 
+902
+} 

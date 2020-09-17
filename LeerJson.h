@@ -9,6 +9,8 @@ class LeerJson
     public:
         LeerJson();
         void RecibirArchivo();
+        void MostrarProy();
+        void RecibirLibreria();
 
 
     protected:

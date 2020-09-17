@@ -12,7 +12,7 @@ class MatrizDisp
     public:
         MatrizDisp();
         void InsertarObj(ObjetoM *objNuevo, int x, int y);
-        string ArchivoDot();
+        void GraficarMatriz();
 
     protected:
 

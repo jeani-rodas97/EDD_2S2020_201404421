@@ -1,5 +1,6 @@
 #include "Metodos.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -18,4 +19,11 @@ int Metodos::ConvertirAscci(string cadena)
         acumulado += letra;
     }
     return acumulado;
+}
+
+string Metodos::ConvtirIntString(int valor)
+{
+    stringstream cadena;
+    cadena << valor;
+    return(cadena.str());
 }

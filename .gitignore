@@ -41,3 +41,5 @@ include
 bin 
 json
 obj
+json/json-forwards.h
+json/json.h

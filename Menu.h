@@ -8,6 +8,7 @@ class Menu
         //Menu();
         int Principal(void);
         int EditarProy(void);
+        int Opcion(void);
 
     protected:
 
