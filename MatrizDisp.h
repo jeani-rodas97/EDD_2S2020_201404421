@@ -10,13 +10,21 @@ using namespace std;
 class MatrizDisp
 {
     public:
-        MatrizDisp();
+        MatrizDisp(int Proy, int Nivel);
         void InsertarObj(ObjetoM *objNuevo, int x, int y);
         void GraficarMatriz();
+
+        int getProyecto();
+        int getNivel();
+
+        void setProyecto(int Proy);
+        void setNivel(int Nivel);
 
     protected:
 
     private:
+        int Proyecto;
+        int Nivel;
         ListaCab *HorizontalX;
         ListaCab *VerticalY;
         void NoHayXniY(ObjetoM *objNuevo, int x, int y);

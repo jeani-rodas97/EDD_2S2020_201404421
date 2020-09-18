@@ -53,7 +53,7 @@ void LeerJson::RecibirArchivo()
         {
             NumNivel = nivel[j]["nivel"].asInt();
             cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
-            MatrizDisp *MatrizNivel = new MatrizDisp();
+            MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -107,8 +107,8 @@ void LeerJson::RecibirLibreria()
     cin >> rutJson;
     ifstream ArchJson(rutJson, ifstream::binary);
     ReadJson.parse(ArchJson, dato);
-    //cout << dato["proyectos"] << endl; /// En dato esta todo el archivo+;
-    const Json::Value& proy = dato["proyectos"]; // array of characters
+
+    const Json::Value& proy = dato["proyectos"];
     for (int i = 0; i < proy.size(); i++)
     {
         cout << "Nombre: " << proy[i]["nombre"].asString() << endl;

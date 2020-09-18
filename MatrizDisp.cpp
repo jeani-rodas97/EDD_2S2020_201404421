@@ -7,8 +7,10 @@
 
 using namespace std;
 
-MatrizDisp::MatrizDisp()
+MatrizDisp::MatrizDisp(int Proy, int Nivel)
 {
+    this->Proyecto = Proy;
+    this->Nivel = Nivel;
     HorizontalX = new ListaCab();
     VerticalY = new ListaCab();
 }
@@ -113,6 +115,26 @@ void MatrizDisp::GraficarMatriz()
         while(TempX != this->HorizontalX->getUltimo());
     }*/
 
+
+int MatrizDisp::getProyecto()
+{
+    return this->Proyecto;
+}
+
+int MatrizDisp::getNivel()
+{
+    return this->Nivel;
+}
+
+void MatrizDisp::setNivel(int Nivel)
+{
+    this->Nivel = Nivel;
+}
+
+void MatrizDisp::setProyecto(int Proy)
+{
+    this->Proyecto = Proy;
+}
 
 ///Metodos privados para usar en declaraciones publicas
 void MatrizDisp::NoHayXniY(ObjetoM *objNuevo, int x, int y)

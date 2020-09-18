@@ -35,6 +35,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArbolABB.cpp" />
+		<Unit filename="ArbolABB.h" />
 		<Unit filename="ArbolAVL.cpp" />
 		<Unit filename="ArbolAVL.h" />
 		<Unit filename="LeerJson.cpp" />
@@ -51,6 +53,8 @@
 		<Unit filename="NodoAVL.h" />
 		<Unit filename="NodoMDisp.cpp" />
 		<Unit filename="NodoMDisp.h" />
+		<Unit filename="ObjABB.cpp" />
+		<Unit filename="ObjABB.h" />
 		<Unit filename="ObjetoM.cpp" />
 		<Unit filename="ObjetoM.h" />
 		<Unit filename="main.cpp" />
