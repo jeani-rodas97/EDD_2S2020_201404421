@@ -1,6 +1,6 @@
 #include "ObjABB.h"
 
-ObjABB::ObjABB(int id, string nombre, char letra, string color)
+ObjABB::ObjABB(int id, string nombre, string letra, string color)
 {
     this->id = id;
     this->nombre = nombre;
@@ -18,7 +18,7 @@ string ObjABB::getNombre()
     return this->nombre;
 }
 
-char ObjABB::getLetra()
+string ObjABB::getLetra()
 {
     return this->letra;
 }
@@ -39,7 +39,7 @@ void ObjABB::setNombre(string nombre)
     this->nombre = nombre;
 }
 
-void ObjABB::setLetra(char letra)
+void ObjABB::setLetra(string letra)
 {
     this->letra = letra;
 }

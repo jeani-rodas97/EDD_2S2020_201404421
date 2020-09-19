@@ -14,13 +14,15 @@ class ArbolABB
         void setRaiz(NodoAVL *root);
         void NuevoNodo(int numero, string cadena);
         void GraficarArbol(NodoAVL *padre);
-        void inorden(NodoAVL *padre);
+        void PreOrden(NodoAVL *padre);
+        void InOrden(NodoAVL *padre);
 
     protected:
 
     private:
         NodoAVL *Raiz;
         NodoAVL *InsertarEnABB(NodoAVL *raiz, int Valor, string Nombre );
+        string Recorrer(NodoAVL *padre);
 
 };
 

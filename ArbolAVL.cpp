@@ -44,7 +44,7 @@ void ArbolAVL::inorden(NodoAVL *padre)
     if (padre != 0)
     {
         orden(padre->getRamaIzq());
-        cout << padre->getNombre() << endl;
+        cout << padre->getInfo() << ".  " << padre->getNombre() << endl;
         orden(padre->getRamaDer());
     }
 }
@@ -143,7 +143,7 @@ NodoAVL* ArbolAVL::InsertarEnAVL(NodoAVL *raiz, int Valor, string Nombre, bool &
     else if (Valor > raiz->getInfo())
     {
         NodoAVL *auxDer;
-        auxDer = InsertarEnAVL(raiz->getRamaIzq(), Valor, Nombre, AlturaEsMayor);
+        auxDer = InsertarEnAVL(raiz->getRamaDer(), Valor, Nombre, AlturaEsMayor);
         raiz->setRamaDer(auxDer);
 
         if(AlturaEsMayor == true)

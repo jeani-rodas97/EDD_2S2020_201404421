@@ -5,7 +5,7 @@
 	<stdlib.h>
 	"Menu.h"
 
-1600065536 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
+1600479803 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
 	"Menu.h"
 	<iostream>
 	<string>
@@ -25,18 +25,19 @@
 	<string>
 	"ObjetoM.h"
 
-1600223256 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1600479735 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
 	<string>
 	"Metodos.h"
 	"ArbolAVL.h"
+	"ArbolABB.h"
 	"MatrizDisp.h"
 	"json\json.h"
 	"jsoncpp.cpp"
 
-1600065536 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
+1600479832 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
 	<string>
 
 1600452037 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
@@ -52,10 +53,10 @@
 	"ObjetoM.h"
 	"string"
 
-1600138225 source:c:\users\jeany\documents\archivosc++\proy1edd\objetom.cpp
+1600466028 source:c:\users\jeany\documents\archivosc++\proy1edd\objetom.cpp
 	"ObjetoM.h"
 
-1600138187 c:\users\jeany\documents\archivosc++\proy1edd\objetom.h
+1600465990 c:\users\jeany\documents\archivosc++\proy1edd\objetom.h
 	<string>
 
 1599112307 source:c:\users\jeany\documents\archivosc++\proy1edd\listacab.cpp
@@ -150,7 +151,7 @@
 1600062451 c:\users\jeany\documents\archivosc++\proy1edd\nodoavl.h
 	<string>
 
-1600062852 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.cpp
+1600476034 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolavl.cpp
 	"ArbolAVL.h"
 	<fstream>
 	<iostream>
@@ -163,16 +164,25 @@
 	<iostream>
 	<string>
 
-1600407369 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.cpp
+1600479735 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.cpp
 	"ArbolABB.h"
+	"Metodos.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
 
-1600407345 c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.h
+1600474027 c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.h
 	<string>
 	"NodoAVL.h"
 
-1600405888 source:c:\users\jeany\documents\archivosc++\proy1edd\objabb.cpp
+1600465870 source:c:\users\jeany\documents\archivosc++\proy1edd\objabb.cpp
 	"ObjABB.h"
 
-1600405879 c:\users\jeany\documents\archivosc++\proy1edd\objabb.h
+1600465870 c:\users\jeany\documents\archivosc++\proy1edd\objabb.h
 	<string>
+
+1600463016 source:c:\users\jeany\documents\archivosc++\proy1edd\lista.cpp
+	"Lista.h"
+
+1600463015 c:\users\jeany\documents\archivosc++\proy1edd\lista.h
 

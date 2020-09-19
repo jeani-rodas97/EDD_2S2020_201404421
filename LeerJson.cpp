@@ -4,6 +4,7 @@
 #include <string>
 #include "Metodos.h"
 #include "ArbolAVL.h"
+#include "ArbolABB.h"
 #include "MatrizDisp.h"
 //
 #include "json\json.h"
@@ -17,6 +18,7 @@
 
 using namespace std;
 ArbolAVL *AVL = new ArbolAVL();
+ArbolABB *ABB = new ArbolABB();
 
 LeerJson::LeerJson()
 {
@@ -75,14 +77,14 @@ void LeerJson::RecibirArchivo()
                     ///Avanzamox en y
                     for(int y = Yinicial; y <= Yfinal; y++)
                     {
-                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, 'P', ColorNodo, Xinicial, y ), Xinicial, y);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
                     }
                 }
                 if (Yinicial == Yfinal)
                 {
                     for (int x = Xinicial; x <= Xfinal; x++)
                     {
-                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, 'P', ColorNodo, x, Yinicial), x, Yinicial);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, x, Yinicial), x, Yinicial);
                     }
                 }
 
@@ -98,19 +100,36 @@ void LeerJson::MostrarProy()
     AVL->inorden(AVL->getRaiz());
 }
 
+void LeerJson::MostrarObjetos()
+{
+    ABB->InOrden(ABB->getRaiz());
+}
+
 void LeerJson::RecibirLibreria()
 {
     char rutJson[100];
     Json::Value dato;
     Json::Reader ReadJson;
+    int id;
+    string nombre;
     cout << "Ingrese la ruta de ubicacion ";
     cin >> rutJson;
     ifstream ArchJson(rutJson, ifstream::binary);
     ReadJson.parse(ArchJson, dato);
 
-    const Json::Value& proy = dato["proyectos"];
-    for (int i = 0; i < proy.size(); i++)
+    const Json::Value& lib = dato["Libreria"];
+    for (int i = 0; i < lib.size(); i++)
     {
-        cout << "Nombre: " << proy[i]["nombre"].asString() << endl;
+        cout << "Identificador: " << lib[i]["identificador"].asInt() << endl;
+        id = lib[i]["identificador"].asInt();
+        cout << "Nombre: " << lib[i]["nombre"].asString() << endl;
+        nombre = lib[i]["nombre"].asString();
+        cout << "Letra: " << lib[i]["letra"].asString() << endl;
+        cout << "Color: " << lib[i]["color"].asString() << "\n" << endl;
+
+        ABB->NuevoNodo(id, nombre);
     }
+    ABB->GraficarArbol(ABB->getRaiz());
+    cout<< "pasar a in orden" << endl;
+    ABB->InOrden(ABB->getRaiz());
 }

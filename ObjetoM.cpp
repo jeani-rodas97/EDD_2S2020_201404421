@@ -1,6 +1,6 @@
 #include "ObjetoM.h"
 
-ObjetoM::ObjetoM(int id, int nivel, char letra, string color, int x, int y)
+ObjetoM::ObjetoM(int id, int nivel, string letra, string color, int x, int y)
 {
     this->idAVL = id;
     this->nivel = nivel;
@@ -20,7 +20,7 @@ int ObjetoM::getNivel()
     return this->nivel;
 }
 
-char ObjetoM::getLetra()
+string ObjetoM::getLetra()
 {
     return this->letra;
 }
@@ -50,7 +50,7 @@ void ObjetoM::setNivel(int nivel)
     this->nivel = nivel;
 }
 
-void ObjetoM::setLetra(char letra)
+void ObjetoM::setLetra(string letra)
 {
     this->letra = letra;
 }

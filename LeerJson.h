@@ -11,6 +11,7 @@ class LeerJson
         void RecibirArchivo();
         void MostrarProy();
         void RecibirLibreria();
+        void MostrarObjetos();
 
 
     protected:

@@ -83,6 +83,7 @@ int Menu::Principal(void)
 int Menu::EditarProy(void)
 {
     Menu menu;
+    LeerJson Archivos;
     int OpPrincipal;
     system("color 75");
     cout<<"\n\n\t ===========================================\n";
@@ -123,7 +124,7 @@ int Menu::EditarProy(void)
             break;
 
         case 5:
-
+            Archivos.MostrarObjetos();
             break;
 
         case 6:
