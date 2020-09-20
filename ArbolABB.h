@@ -16,6 +16,7 @@ class ArbolABB
         void GraficarArbol(NodoAVL *padre);
         void PreOrden(NodoAVL *padre);
         void InOrden(NodoAVL *padre);
+        bool Buscar(int num);
 
     protected:
 
@@ -23,6 +24,7 @@ class ArbolABB
         NodoAVL *Raiz;
         NodoAVL *InsertarEnABB(NodoAVL *raiz, int Valor, string Nombre );
         string Recorrer(NodoAVL *padre);
+        int Revisar(NodoAVL *padre, int num);
 
 };
 

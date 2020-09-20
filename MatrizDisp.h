@@ -12,7 +12,7 @@ class MatrizDisp
     public:
         MatrizDisp(int Proy, int Nivel);
         void InsertarObj(ObjetoM *objNuevo, int x, int y);
-        void GraficarMatriz(int Proyecto, int Nivel);
+        void GraficarMatriz(int Proyecto, int Nivel, string recorrido);
 
         int getProyecto();
         int getNivel();

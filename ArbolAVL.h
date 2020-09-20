@@ -13,6 +13,7 @@ class ArbolAVL
         ArbolAVL();
         NodoAVL *getRaiz();
         void setRaiz(NodoAVL *root);
+        bool Buscar(int num);
         void NuevoNodo(int numero, string cadena);
         void GraficarArbol(NodoAVL *padre);
         void inorden(NodoAVL *padre);
@@ -28,6 +29,7 @@ class ArbolAVL
         NodoAVL *RotIzqIzq(NodoAVL *a, NodoAVL *b);
         string Recorrer(NodoAVL *padre);
         void orden(NodoAVL *padre);
+        int Revisar(NodoAVL *padre);
 
 
 };

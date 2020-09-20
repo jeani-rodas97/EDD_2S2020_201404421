@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <cstring>
 #include "ListaCab.h"
+#include "Lista.h"
+#include "Nodo.h"
 
 using namespace std;
 
@@ -47,11 +49,12 @@ void MatrizDisp::InsertarObj(ObjetoM *objNuevo, int x, int y)
     }
 }
 
-void MatrizDisp::GraficarMatriz(int Proyecto, int Nivel)
+void MatrizDisp::GraficarMatriz(int Proyecto, int Nivel, string recorrido)
 {
     Metodos metodo;
+    Lista listaObj;
     ofstream GrafMatriz;
-    int indiceX, indiceY, contador;
+    int indiceX, indiceY, contador, x, y;
     char rut[100], sy[100];
     string ruta, proy, niv, neato;
     string X;
@@ -103,26 +106,11 @@ void MatrizDisp::GraficarMatriz(int Proyecto, int Nivel)
     }
 
     ///Dibujando los nodos
-    if ((Fila != 0) && (Columna != 0))
-    {
-        Fila = HorizontalX->getInicio();
-        TempX = Fila;
-        while(Fila != 0)
-        {
-            Columna = VerticalY->getInicio();
-            while(Columna != 0)
-            {
-                if(TempX->abajoN != 0)
-                {
-                    TempX = TempX->abajoN;
-                    //dot += metodo.ConvtirIntString(TempX->getObj()->getX() +1) + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + " [style = filled, fillcolor=\"" + TempX->getObj()->getColor() + "\", shape = circle, height = 0.5  fixedsize=true label = \"" + TempX->getObj()->getLetra() + "\",pos=\"" + metodo.ConvtirIntString(TempX->getObj()->getX() +1) + ",-" + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + "!\"] \n";
-                }
-            }
-        }
+    dot += recorrido;
+
         //TempX = HorizontalX->Encontrar(7);
         //dot += metodo.ConvtirIntString(TempX->getObj()->getX() +1) + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + " [style = filled, fillcolor=\"" + TempX->getObj()->getColor() + "\", shape = circle, height = 0.5  fixedsize=true label = \"" + TempX->getObj()->getLetra() + "\",pos=\"" + metodo.ConvtirIntString(TempX->getObj()->getX() +1) + ",-" + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + "!\"] \n";
         //31 [style = filled, fillcolor="#5BE8A4", shape = circle, height = 0.5  fixedsize=true label = "H(3,1)",pos="3,-1!"]
-    }
 
     dot += "}";
     ruta = "Matriz" + metodo.ConvtirIntString(Proyecto) + metodo.ConvtirIntString(Nivel) + ".txt";

@@ -1,18 +1,22 @@
 #ifndef NODO_H
 #define NODO_H
 #include "ObjABB.h"
+#include <string>
+
+using namespace std;
 
 
 class Nodo
 {
     public:
-        Nodo(ObjABB *Objeto);
+        Nodo(int proy, int nivel, int id, string nombre, string letra, string color, int posX, int posY);
+
+        ObjABB *Objeto;
+        Nodo *Siguiente;
 
     protected:
 
     private:
-        ObjABB *Objeto;
-        Nodo *Siguiente;
 };
 
 #endif // NODO_H

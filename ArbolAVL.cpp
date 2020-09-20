@@ -49,8 +49,29 @@ void ArbolAVL::inorden(NodoAVL *padre)
     }
 }
 
+bool ArbolAVL::Buscar(int num)
+{
+    int review = Revisar(this->getRaiz());
+    if (review == num)
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
 
 ///METODOS PRIVADOS
+
+int ArbolAVL::Revisar(NodoAVL *padre)
+{
+    if (padre != 0)
+    {
+        Revisar(padre->getRamaIzq());
+        Revisar(padre->getRamaDer());
+        return padre->getInfo();
+    }
+}
 
 void ArbolAVL::orden(NodoAVL *padre)
 {

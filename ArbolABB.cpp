@@ -24,7 +24,31 @@ void ArbolABB::NuevoNodo(int numero, string nombre)
     this->Raiz = InsertarEnABB(this->getRaiz(), numero, nombre);
 }
 
+bool ArbolABB::Buscar(int num)
+{
+    int review = Revisar(this->getRaiz(), num);
+    if (review == num)
+    {
+        return true;
+    }
+    else
+        return false;
+}
+
 ///Metodos privados
+
+int ArbolABB::Revisar(NodoAVL *padre, int num)
+{
+    if(padre != 0)
+    {
+        Revisar(padre->getRamaIzq(), num);
+        if (padre->getInfo() == num)
+        {
+            return padre->getInfo();
+        }
+        Revisar(padre->getRamaDer(), num);
+    }
+}
 
 NodoAVL* ArbolABB::InsertarEnABB(NodoAVL *raiz, int Valor, string Nombre)
 {

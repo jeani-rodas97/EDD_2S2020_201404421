@@ -18,7 +18,7 @@ int Menu::Principal(void)
     LeerJson leerfile;
     ArbolAVL Avl;
     //ArbolAVL *AVL = new ArbolAVL();
-    int OpPrincipal;
+    int OpPrincipal, NumProy;
     system("color 57");
     cout<<"\n\n\t ===========================================\n";
     cout<<"\t|              ELIJA UNA OPCION             |\n";
@@ -51,8 +51,21 @@ int Menu::Principal(void)
             break;
 
         case 2:
-            system("cls");
-            menu.EditarProy();
+            //system("cls");
+            leerfile.MostrarProy();
+            cout << "Elija el numero del proyecto " << endl;
+            cin >> NumProy;
+            if (leerfile.VerificarProy(NumProy) == true)
+            {
+                menu.EditarProy(NumProy);
+            }
+            else
+            {
+                cout << "Numero invalido " << endl;
+                menu.Opcion();
+            }
+
+
             break;
 
         case 3:
@@ -63,11 +76,12 @@ int Menu::Principal(void)
             break;
 
         case 4:
-
+            system("start AVL.png");
+            menu.Opcion();
             break;
 
         case 5:
-
+            menu.Opcion();
             break;
 
         case 6:
@@ -80,11 +94,11 @@ int Menu::Principal(void)
     }
 }
 
-int Menu::EditarProy(void)
+int Menu::EditarProy(int Proy)
 {
     Menu menu;
     LeerJson Archivos;
-    int OpPrincipal;
+    int OpPrincipal, NumObj, NumNivel;
     system("color 75");
     cout<<"\n\n\t ===========================================\n";
     cout<<"\t|              ELIJA UNA OPCION             |\n";
@@ -108,43 +122,65 @@ int Menu::EditarProy(void)
     switch (OpPrincipal)
     {
         case 1:
-            cout << "Opcion 1 " << endl;
+            Archivos.RecibirNivel(Proy);
+            menu.Opcion();
             break;
 
         case 2:
-
+            menu.Opcion();
             break;
 
         case 3:
+            menu.Opcion();
 
             break;
 
         case 4:
+            menu.Opcion();
 
             break;
 
         case 5:
             Archivos.MostrarObjetos();
+            menu.Opcion();
             break;
 
         case 6:
+            menu.Opcion();
 
             break;
 
         case 7:
             Archivos.MostrarObjetos();
+            cout << "Ingrese el numero del objeto que desee eliminar" << endl;
+            cin >> NumObj;
+            if (Archivos.VerificarObj(NumObj) == true)
+            {
+                Archivos.EliminarObjetos(NumObj);
+            }
+            else
+                cout << "Numero de identificador incorrecto " << endl;
+
+            menu.Opcion();
+
 
             break;
 
         case 8:
+            menu.Opcion();
 
             break;
 
         case 9:
+            cout << "Que nivel desea eliminar " << endl;
+            cin >> NumNivel;
+
+            menu.Opcion();
 
             break;
 
         case 10:
+            menu.Opcion();
 
             break;
 

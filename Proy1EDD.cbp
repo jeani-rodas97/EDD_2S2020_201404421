@@ -51,8 +51,12 @@
 		<Unit filename="Menu.h" />
 		<Unit filename="Metodos.cpp" />
 		<Unit filename="Metodos.h" />
+		<Unit filename="Nodo.cpp" />
+		<Unit filename="Nodo.h" />
 		<Unit filename="NodoAVL.cpp" />
 		<Unit filename="NodoAVL.h" />
+		<Unit filename="NodoLista.cpp" />
+		<Unit filename="NodoLista.h" />
 		<Unit filename="NodoMDisp.cpp" />
 		<Unit filename="NodoMDisp.h" />
 		<Unit filename="ObjABB.cpp" />

@@ -6,6 +6,7 @@
 #include "ArbolAVL.h"
 #include "ArbolABB.h"
 #include "MatrizDisp.h"
+#include "Lista.h"
 //
 #include "json\json.h"
 #include "jsoncpp.cpp"
@@ -30,8 +31,8 @@ void LeerJson::RecibirArchivo()
     Metodos metodo;
 
     char rutJson[100];
-    int NumNombreProy, Xinicial, Yinicial, Xfinal, Yfinal, NumNivel;
-    string ColorNodo;
+    int NumNombreProy, Xinicial, Yinicial, Xfinal, Yfinal, NumNivel, id;
+    string ColorNodo, nombre, letra, RecorrerList ;
     Json::Value dato;
     Json::Reader ReadJson;
     cout << "Ingrese la ruta de ubicacion ";
@@ -56,7 +57,9 @@ void LeerJson::RecibirArchivo()
             NumNivel = nivel[j]["nivel"].asInt();
             cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
             cout << "Nuevo nivel, nueva matriz:     " << NumNombreProy << NumNivel << endl;
+            RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
+            Lista *ListaNivel = new Lista();
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -79,6 +82,7 @@ void LeerJson::RecibirArchivo()
                     for(int y = Yinicial; y <= Yfinal; y++)
                     {
                         cout << "creando " << Xinicial << " , " << y << endl;
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, Xinicial, y);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
                     }
                 }
@@ -86,12 +90,65 @@ void LeerJson::RecibirArchivo()
                 {
                     for (int x = Xinicial; x <= Xfinal; x++)
                     {
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, x, Yinicial);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, x, Yinicial), x, Yinicial);
                     }
                 }
+            }
+            const Json::Value& ventanas = nivel[j]["ventanas"];
+            for (int k = 0; k < ventanas.size(); k++)
+            {
+                ColorNodo = ventanas[k]["color"].asString();
+                cout << "color: " << ventanas[k]["color"].asString() << endl;
+                const Json::Value& ventanaInicio = ventanas[k]["inicio"];
+                Xinicial = ventanaInicio[0].asInt();
+                Yinicial = ventanaInicio[1].asInt();
+                cout << "inicioX: " << ventanaInicio[0].asString() << endl;
+                cout << "inicioY: " << ventanaInicio[1].asString() << endl;
+                const Json::Value& ventanaFinal = ventanas[k]["final"];
+                cout << "finalX: " << ventanaFinal[0].asString() << endl;
+                cout << "finalY: " << ventanaFinal[1].asString() << endl;
+                Xfinal = ventanaFinal[0].asInt();
+                Yfinal = ventanaFinal[1].asInt();
+                if (Xinicial == Xfinal)
+                {
+                    ///Avanzamox en y
+                    for(int y = Yinicial; y <= Yfinal; y++)
+                    {
+                        cout << "creando " << Xinicial << " , " << y << endl;
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, Xinicial, y);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, Xinicial, y ), Xinicial, y);
+                    }
+                }
+                if (Yinicial == Yfinal)
+                {
+                    for (int x = Xinicial; x <= Xfinal; x++)
+                    {
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, x, Yinicial);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, x, Yinicial ), x, Yinicial);
+                    }
+                }
+            }
+            const Json::Value& objetos = nivel[j]["objetos"];
+            for (int k = 0; k < objetos.size(); k++)
+            {
+                id = objetos[k]["identificador"].asInt();
+                nombre = objetos[k]["nombre"].asString();
+                letra = objetos[k]["letra"].asString();
+                ColorNodo = objetos[k]["color"].asString();
+                const Json::Value& puntos = objetos[k]["puntos"];
+                for(int p= 0; p < puntos.size(); p++)
+                {
+                    Xinicial = puntos[p]["x"].asInt();
+                    Yinicial = puntos[p]["y"].asInt();
+                    ListaNivel->NuevoObje(NumNombreProy, NumNivel, id, nombre, letra, ColorNodo, Xinicial, Yinicial);
+                    MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, letra , ColorNodo, Xinicial, Yinicial ), Xinicial, Yinicial);
+                }
 
             }
-            MatrizNivel->GraficarMatriz(NumNombreProy, NumNivel);
+            cout << ListaNivel->Vacia() << endl;
+            RecorrerList  = ListaNivel->Recorrer();
+            MatrizNivel->GraficarMatriz(NumNombreProy, NumNivel, RecorrerList);
         }
     }
     AVL->GraficarArbol(AVL->getRaiz());
@@ -101,6 +158,17 @@ void LeerJson::MostrarProy()
 {
     AVL->inorden(AVL->getRaiz());
 }
+
+bool LeerJson::VerificarProy(int proy)
+{
+    return AVL->Buscar(proy);
+}
+
+bool LeerJson::VerificarObj(int obj)
+{
+    return ABB->Buscar(obj);
+}
+
 
 void LeerJson::MostrarObjetos()
 {
@@ -136,7 +204,122 @@ void LeerJson::RecibirLibreria()
     ABB->InOrden(ABB->getRaiz());
 }
 
-void LeerJson::EliminarObjetos()
+void LeerJson::RecibirNivel(int NumNombreProy)
 {
+    char rutJson[100];
+    Json::Value dato;
+    Json::Reader ReadJson;
+    int id, NumNivel, Xinicial, Yinicial, Xfinal, Yfinal;
+    string nombre, RecorrerList, ColorNodo, letra;
+    cout << "Ingrese la ruta de ubicacion ";
+    cin >> rutJson;
+    ifstream ArchJson(rutJson, ifstream::binary);
+    ReadJson.parse(ArchJson, dato);
 
+    const Json::Value& nivel = dato["niveles"];
+        for (int j = 0; j < nivel.size(); j++)
+        {
+            NumNivel = nivel[j]["nivel"].asInt();
+            cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
+            cout << "Nuevo nivel, nueva matriz:     " << NumNombreProy << NumNivel << endl;
+            RecorrerList = "";
+            MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
+            Lista *ListaNivel = new Lista();
+                ///Estoy en paredes
+            const Json::Value& paredes = nivel[j]["paredes"];
+            for (int k = 0; k < paredes.size(); k++)
+            {
+                ColorNodo = paredes[k]["color"].asString();
+                cout << "color: " << paredes[k]["color"].asString() << endl;
+                const Json::Value& paredInicio = paredes[k]["inicio"];
+                Xinicial = paredInicio[0].asInt();
+                Yinicial = paredInicio[1].asInt();
+                cout << "inicioX: " << paredInicio[0].asString() << endl;
+                cout << "inicioY: " << paredInicio[1].asString() << endl;
+                const Json::Value& paredFinal = paredes[k]["final"];
+                cout << "finalX: " << paredFinal[0].asString() << endl;
+                cout << "finalY: " << paredFinal[1].asString() << endl;
+                Xfinal = paredFinal[0].asInt();
+                Yfinal = paredFinal[1].asInt();
+                if (Xinicial == Xfinal)
+                {
+                    ///Avanzamox en y
+                    for(int y = Yinicial; y <= Yfinal; y++)
+                    {
+                        cout << "creando " << Xinicial << " , " << y << endl;
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, Xinicial, y);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
+                    }
+                }
+                if (Yinicial == Yfinal)
+                {
+                    for (int x = Xinicial; x <= Xfinal; x++)
+                    {
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, x, Yinicial);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, x, Yinicial), x, Yinicial);
+                    }
+                }
+            }
+            const Json::Value& ventanas = nivel[j]["ventanas"];
+            for (int k = 0; k < ventanas.size(); k++)
+            {
+                ColorNodo = ventanas[k]["color"].asString();
+                cout << "color: " << ventanas[k]["color"].asString() << endl;
+                const Json::Value& ventanaInicio = ventanas[k]["inicio"];
+                Xinicial = ventanaInicio[0].asInt();
+                Yinicial = ventanaInicio[1].asInt();
+                cout << "inicioX: " << ventanaInicio[0].asString() << endl;
+                cout << "inicioY: " << ventanaInicio[1].asString() << endl;
+                const Json::Value& ventanaFinal = ventanas[k]["final"];
+                cout << "finalX: " << ventanaFinal[0].asString() << endl;
+                cout << "finalY: " << ventanaFinal[1].asString() << endl;
+                Xfinal = ventanaFinal[0].asInt();
+                Yfinal = ventanaFinal[1].asInt();
+                if (Xinicial == Xfinal)
+                {
+                    ///Avanzamox en y
+                    for(int y = Yinicial; y <= Yfinal; y++)
+                    {
+                        cout << "creando " << Xinicial << " , " << y << endl;
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, Xinicial, y);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, Xinicial, y ), Xinicial, y);
+                    }
+                }
+                if (Yinicial == Yfinal)
+                {
+                    for (int x = Xinicial; x <= Xfinal; x++)
+                    {
+                        ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, x, Yinicial);
+                        MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, x, Yinicial ), x, Yinicial);
+                    }
+                }
+            }
+            const Json::Value& objetos = nivel[j]["objetos"];
+            for (int k = 0; k < objetos.size(); k++)
+            {
+                id = objetos[k]["identificador"].asInt();
+                nombre = objetos[k]["nombre"].asString();
+                letra = objetos[k]["letra"].asString();
+                ColorNodo = objetos[k]["color"].asString();
+                const Json::Value& puntos = objetos[k]["puntos"];
+                for(int p= 0; p < puntos.size(); p++)
+                {
+                    Xinicial = puntos[p]["x"].asInt();
+                    Yinicial = puntos[p]["y"].asInt();
+                    ListaNivel->NuevoObje(NumNombreProy, NumNivel, id, nombre, letra, ColorNodo, Xinicial, Yinicial);
+                    MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, letra , ColorNodo, Xinicial, Yinicial ), Xinicial, Yinicial);
+                }
+
+            }
+            cout << ListaNivel->Vacia() << endl;
+            RecorrerList  = ListaNivel->Recorrer();
+            MatrizNivel->GraficarMatriz(NumNombreProy, NumNivel, RecorrerList);
+        }
+}
+
+void LeerJson::EliminarObjetos(int obj)
+{
+    Lista ListaBuscar;
+    cout << "Usted va a eliminar el objeto " << obj;
+    ListaBuscar.Vacia();
 }
