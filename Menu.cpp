@@ -132,6 +132,7 @@ int Menu::EditarProy(void)
             break;
 
         case 7:
+            Archivos.MostrarObjetos();
 
             break;
 

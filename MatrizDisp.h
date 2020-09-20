@@ -12,7 +12,7 @@ class MatrizDisp
     public:
         MatrizDisp(int Proy, int Nivel);
         void InsertarObj(ObjetoM *objNuevo, int x, int y);
-        void GraficarMatriz();
+        void GraficarMatriz(int Proyecto, int Nivel);
 
         int getProyecto();
         int getNivel();
@@ -20,13 +20,14 @@ class MatrizDisp
         void setProyecto(int Proy);
         void setNivel(int Nivel);
 
+        ListaCab *HorizontalX;
+        ListaCab *VerticalY;
+
     protected:
 
     private:
         int Proyecto;
         int Nivel;
-        ListaCab *HorizontalX;
-        ListaCab *VerticalY;
         void NoHayXniY(ObjetoM *objNuevo, int x, int y);
         void HayX(ObjetoM *objNuevo, int x, int y);
         void HayY(ObjetoM *objNuevo, int x, int y);

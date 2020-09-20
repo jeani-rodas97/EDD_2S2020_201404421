@@ -55,6 +55,7 @@ void LeerJson::RecibirArchivo()
         {
             NumNivel = nivel[j]["nivel"].asInt();
             cout << "Nivel: " << nivel[j]["nivel"].asString() << endl;
+            cout << "Nuevo nivel, nueva matriz:     " << NumNombreProy << NumNivel << endl;
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
@@ -77,6 +78,7 @@ void LeerJson::RecibirArchivo()
                     ///Avanzamox en y
                     for(int y = Yinicial; y <= Yfinal; y++)
                     {
+                        cout << "creando " << Xinicial << " , " << y << endl;
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
                     }
                 }
@@ -89,7 +91,7 @@ void LeerJson::RecibirArchivo()
                 }
 
             }
-            //MatrizNivel->GraficarMatriz();
+            MatrizNivel->GraficarMatriz(NumNombreProy, NumNivel);
         }
     }
     AVL->GraficarArbol(AVL->getRaiz());
@@ -132,4 +134,9 @@ void LeerJson::RecibirLibreria()
     ABB->GraficarArbol(ABB->getRaiz());
     cout<< "pasar a in orden" << endl;
     ABB->InOrden(ABB->getRaiz());
+}
+
+void LeerJson::EliminarObjetos()
+{
+
 }

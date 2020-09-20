@@ -4,6 +4,8 @@
 #include "Metodos.h"
 #include <string>
 #include <stdlib.h>
+#include <cstring>
+#include "ListaCab.h"
 
 using namespace std;
 
@@ -45,76 +47,93 @@ void MatrizDisp::InsertarObj(ObjetoM *objNuevo, int x, int y)
     }
 }
 
-void MatrizDisp::GraficarMatriz()
+void MatrizDisp::GraficarMatriz(int Proyecto, int Nivel)
 {
     Metodos metodo;
     ofstream GrafMatriz;
     int indiceX, indiceY, contador;
+    char rut[100], sy[100];
+    string ruta, proy, niv, neato;
     string X;
     string Y;
     string CoordeenadasCol;
     string letra;
     string dot = "digraph matriz{\n node[shape=box color=\"#E85BB9\" ranksep=0.2] \n";
-    NodoMDisp *Fila = this->HorizontalX->getInicio();
-    NodoMDisp *Columna = this->VerticalY->getInicio();
-    NodoMDisp *TempX = Fila->abajoN;
-    NodoMDisp *TempY = Columna->sigN;
-    NodoMDisp *Actual;
-    ///Dibujando las cabeceras de las filas
-    indiceX = Fila->getPX();
-    contador = 1;
-    dot += "0" + metodo.ConvtirIntString(indiceX) + " [label = \""+ metodo.ConvtirIntString(indiceX) + "\" pos = \"0,-" + metodo.ConvtirIntString(indiceX) + "!\"]";
-    while (TempX != 0)
+
+    proy = Proyecto;
+    niv = Nivel;
+
+    NodoMDisp *Fila = HorizontalX->getInicio();
+    NodoMDisp *Columna = VerticalY->getInicio();
+
+    NodoMDisp *TempX = Fila;
+    NodoMDisp *TempY = Columna;
+
+    ///Dibujando las cabeceras de las filas pero salieron los encabezados de las columnas (A, B, C)
+    contador = 0;
+    if (Fila != 0)
     {
-        indiceX = TempX->getPX();
-        dot += "0" + metodo.ConvtirIntString(indiceX) + " [label = \""+ metodo.ConvtirIntString(indiceX) + "\" pos = \"0,-" + metodo.ConvtirIntString(contador) + "!\"]";
-        contador++;
+        dot += "0" + metodo.ConvtirIntString(contador+1) + " [label = \""+ metodo.ConvtirIntString(contador) + "\" pos = \"0,-" + metodo.ConvtirIntString(contador+1) + "!\"] \n";
         TempX = TempX->abajoN;
+        while (TempX != 0)
+        {
+            dot += "0" + metodo.ConvtirIntString(contador+1) + "->";
+            indiceX = TempX->getPX();
+            contador++;
+            dot += "0" + metodo.ConvtirIntString(contador+1) + "\n";
+            dot += "0" + metodo.ConvtirIntString(contador+1) + " [label = \""+ metodo.ConvtirIntString(contador) + "\" pos = \"0,-" + metodo.ConvtirIntString(contador+1) + "!\"] \n";
+            TempX = TempX->abajoN;
+        }
     }
-    ///Dibujando las cabeceras de las columnas
-    indiceY = Columna->getPY();
-    contador = 1;
-    dot += metodo.ConvtirIntString(indiceY) + "0" + " [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(contador) + ",0!\"]";
-    while (TempY != 0)
+
+    ///Dibujando las cabeceras de las filas (1 2 3)
+    indiceY = 0;
+    if (Columna != 0 )
     {
-        indiceY = TempY->getPY();
-        dot += metodo.ConvtirIntString(indiceY) + "0" + " [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(contador) + ",0!\"]";
-        contador++;
+        dot += metodo.ConvtirIntString(indiceY+1) + "0 [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(indiceY+1) + ",0!\"] \n";
         TempY = TempY->sigN;
+        while (TempY != 0)
+        {
+            dot += metodo.ConvtirIntString(indiceY+1) + "0 ->";
+            indiceY++;
+            dot += metodo.ConvtirIntString(indiceY+1) + "0 \n";
+            dot += metodo.ConvtirIntString(indiceY+1) + "0 [label = \""+ metodo.ConvtirIntString(indiceY) + "\" pos = \"" + metodo.ConvtirIntString(indiceY+1) + ",0!\"] \n";
+            TempY = TempY->sigN;
+        }
     }
+
     ///Dibujando los nodos
-    /*TempY = Columna;
-    while (Columna != 0)
+    if ((Fila != 0) && (Columna != 0))
     {
+        Fila = HorizontalX->getInicio();
+        TempX = Fila;
         while(Fila != 0)
         {
-            if (TempY->abajoN)
-            X = Columna->getPX();
-            Y = Columna->getPY();
-            CoordeenadasCol = X + Y;
-                            ///10 [label = "C(1,0)" pos = "1,0!"]
-            dot += CoordeenadasCol + " [label = \"" + Columna->getObj()->getLetra() + "\" pos = \"" ;
+            Columna = VerticalY->getInicio();
+            while(Columna != 0)
+            {
+                if(TempX->abajoN != 0)
+                {
+                    TempX = TempX->abajoN;
+                    //dot += metodo.ConvtirIntString(TempX->getObj()->getX() +1) + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + " [style = filled, fillcolor=\"" + TempX->getObj()->getColor() + "\", shape = circle, height = 0.5  fixedsize=true label = \"" + TempX->getObj()->getLetra() + "\",pos=\"" + metodo.ConvtirIntString(TempX->getObj()->getX() +1) + ",-" + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + "!\"] \n";
+                }
+            }
         }
-    }*/
-    dot += "}";
+        //TempX = HorizontalX->Encontrar(7);
+        //dot += metodo.ConvtirIntString(TempX->getObj()->getX() +1) + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + " [style = filled, fillcolor=\"" + TempX->getObj()->getColor() + "\", shape = circle, height = 0.5  fixedsize=true label = \"" + TempX->getObj()->getLetra() + "\",pos=\"" + metodo.ConvtirIntString(TempX->getObj()->getX() +1) + ",-" + metodo.ConvtirIntString(TempX->getObj()->getY() +1) + "!\"] \n";
+        //31 [style = filled, fillcolor="#5BE8A4", shape = circle, height = 0.5  fixedsize=true label = "H(3,1)",pos="3,-1!"]
+    }
 
-    GrafMatriz.open("GrafoMatriz.txt", ios::out);
+    dot += "}";
+    ruta = "Matriz" + metodo.ConvtirIntString(Proyecto) + metodo.ConvtirIntString(Nivel) + ".txt";
+    strcpy(rut, ruta.c_str());
+    GrafMatriz.open(rut, ios::out);
     GrafMatriz << dot;
     GrafMatriz.close();
-    system("neato GrafoMatriz.txt -Tpng -o matriz.png");
+    neato = "neato " + ruta + " -Tpng -o " + "matriz" + metodo.ConvtirIntString(Proyecto) + metodo.ConvtirIntString(Nivel) +".png";
+    strcpy(sy, neato.c_str());
+    system(sy);
 }
-
-    /*
-    if(TempX != 0)
-    {
-        do
-        {
-            letra = TempX->getObj()->getLetra();
-            dot += "t" + letra + " ";
-        }
-        while(TempX != this->HorizontalX->getUltimo());
-    }*/
-
 
 int MatrizDisp::getProyecto()
 {
@@ -137,6 +156,7 @@ void MatrizDisp::setProyecto(int Proy)
 }
 
 ///Metodos privados para usar en declaraciones publicas
+
 void MatrizDisp::NoHayXniY(ObjetoM *objNuevo, int x, int y)
 {
     HorizontalX->Insertar(x);
@@ -174,7 +194,7 @@ void MatrizDisp::HayY(ObjetoM *objNuevo, int x, int y)
             Nuevo->sigN = Temp;
             Nuevo->antN = Temp->antN;
             Temp->antN->sigN = Nuevo;
-            Temp->sigN = Nuevo;
+            Temp->antN = Nuevo;
             EncontreX = true;
             break;
         }

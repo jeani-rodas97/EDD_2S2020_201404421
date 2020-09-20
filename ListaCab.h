@@ -1,6 +1,7 @@
 #ifndef LISTACAB_H
 #define LISTACAB_H
 #include "NodoMDisp.h"
+#include <string>
 
 
 class ListaCab
@@ -13,6 +14,7 @@ class ListaCab
         NodoMDisp *Encontrar(int indice);
         NodoMDisp *getInicio();
         NodoMDisp *getUltimo();
+        string RecorrerLista();
 
     protected:
 

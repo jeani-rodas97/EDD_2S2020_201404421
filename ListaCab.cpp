@@ -87,3 +87,16 @@ NodoMDisp* ListaCab::getUltimo()
 {
     return ultimo;
 }
+
+string ListaCab::RecorrerLista()
+{
+    string indice;
+    string dot;
+    NodoMDisp *aux = inicio;
+    while(aux != 0)
+    {
+        indice = aux->getPX();
+        dot += indice + "\n";
+    }
+    return dot;
+}

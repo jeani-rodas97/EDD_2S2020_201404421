@@ -41,6 +41,8 @@
 		<Unit filename="ArbolAVL.h" />
 		<Unit filename="LeerJson.cpp" />
 		<Unit filename="LeerJson.h" />
+		<Unit filename="Lista.cpp" />
+		<Unit filename="Lista.h" />
 		<Unit filename="ListaCab.cpp" />
 		<Unit filename="ListaCab.h" />
 		<Unit filename="MatrizDisp.cpp" />

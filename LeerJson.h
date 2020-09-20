@@ -12,6 +12,7 @@ class LeerJson
         void MostrarProy();
         void RecibirLibreria();
         void MostrarObjetos();
+        void EliminarObjetos();
 
 
     protected:
