@@ -62,7 +62,7 @@ void LeerJson::RecibirArchivo()
             RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
             Lista *ListaNivel = new Lista();
-
+            LGeneral->NuevoNivel(NumNombreProy, NumNivel);
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -87,6 +87,7 @@ void LeerJson::RecibirArchivo()
                         cout << "creando " << Xinicial << " , " << y << endl;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, Xinicial, y);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
+                        LGeneral->NuevoNivel(NumNombreProy, NumNivel);
                     }
                 }
                 if (Yinicial == Yfinal)
@@ -95,6 +96,7 @@ void LeerJson::RecibirArchivo()
                     {
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, x, Yinicial);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, x, Yinicial), x, Yinicial);
+                        LGeneral->NuevoNivel(NumNombreProy, NumNivel);
                     }
                 }
             }
@@ -121,6 +123,7 @@ void LeerJson::RecibirArchivo()
                         cout << "creando " << Xinicial << " , " << y << endl;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, Xinicial, y);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, Xinicial, y ), Xinicial, y);
+                        LGeneral->NuevoNivel(NumNombreProy, NumNivel);
                     }
                 }
                 if (Yinicial == Yfinal)
@@ -128,6 +131,7 @@ void LeerJson::RecibirArchivo()
                     for (int x = Xinicial; x <= Xfinal; x++)
                     {
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, x, Yinicial);
+                        LGeneral->NuevoNivel(NumNombreProy, NumNivel);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, x, Yinicial ), x, Yinicial);
                     }
                 }
@@ -172,6 +176,10 @@ bool LeerJson::VerificarObj(int obj)
     return ABB->BuscarPost(obj);
 }
 
+void LeerJson::Niveles(int Proy)
+{
+    LGeneral->MostrarNivel(Proy);
+}
 
 void LeerJson::MostrarObjetos()
 {

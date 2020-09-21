@@ -141,6 +141,7 @@ int Menu::EditarProy(int Proy)
             break;
 
         case 2:
+            Archivos.Niveles(Proy);
             menu.Opcion();
             break;
 

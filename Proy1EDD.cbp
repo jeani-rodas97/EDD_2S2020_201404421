@@ -61,6 +61,8 @@
 		<Unit filename="NodoLista.h" />
 		<Unit filename="NodoMDisp.cpp" />
 		<Unit filename="NodoMDisp.h" />
+		<Unit filename="NodoNivel.cpp" />
+		<Unit filename="NodoNivel.h" />
 		<Unit filename="ObjABB.cpp" />
 		<Unit filename="ObjABB.h" />
 		<Unit filename="ObjetoM.cpp" />

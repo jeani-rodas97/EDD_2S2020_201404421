@@ -5,7 +5,7 @@
 	<stdlib.h>
 	"Menu.h"
 
-1600658575 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
+1600667751 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
 	"Menu.h"
 	<iostream>
 	<string>
@@ -27,7 +27,7 @@
 	<string>
 	"ObjetoM.h"
 
-1600665065 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1600667361 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
@@ -41,7 +41,7 @@
 	"json\json.h"
 	"jsoncpp.cpp"
 
-1600651819 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
+1600667781 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
 	<string>
 
 1600591484 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
@@ -214,11 +214,17 @@
 1600659634 c:\users\jeany\documents\archivosc++\proy1edd\nodolista.h
 	"Lista.h"
 
-1600665044 source:c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.cpp
+1600667648 source:c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.cpp
 	"ListaGlobal.h"
 	"Lista.h"
+	<iostream>
+	<string>
+	<cstring>
+	<cstdio>
+	<cstdlib>
 
-1600666460 c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.h
+1600667552 c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.h
+	"NodoNivel.h"
 	<string>
 
 1600665460 c:\users\jeany\documents\archivosc++\proy1edd\nodofinal.h
@@ -226,4 +232,9 @@
 
 1600665460 source:c:\users\jeany\documents\archivosc++\proy1edd\nodofinal.cpp
 	"NodoFinal.h"
+
+1600667552 c:\users\jeany\documents\archivosc++\proy1edd\nodonivel.h
+
+1600667552 source:c:\users\jeany\documents\archivosc++\proy1edd\nodonivel.cpp
+	"NodoNivel.h"
 

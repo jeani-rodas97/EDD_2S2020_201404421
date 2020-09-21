@@ -16,6 +16,7 @@ class LeerJson
         void RecibirNivel(int NumNombreProy);
         bool VerificarProy(int proy);
         bool VerificarObj(int obj);
+        void Niveles(int Proy);
 
 
     protected:
