@@ -17,6 +17,7 @@ class ArbolABB
         void PreOrden(NodoAVL *padre);
         void InOrden(NodoAVL *padre);
         bool Buscar(int num);
+        bool BuscarPost(int num);
 
     protected:
 
@@ -25,6 +26,7 @@ class ArbolABB
         NodoAVL *InsertarEnABB(NodoAVL *raiz, int Valor, string Nombre );
         string Recorrer(NodoAVL *padre);
         int Revisar(NodoAVL *padre, int num);
+        int Post(NodoAVL *padre);
 
 };
 

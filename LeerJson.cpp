@@ -169,7 +169,7 @@ bool LeerJson::VerificarProy(int proy)
 
 bool LeerJson::VerificarObj(int obj)
 {
-    return ABB->Buscar(obj);
+    return ABB->BuscarPost(obj);
 }
 
 

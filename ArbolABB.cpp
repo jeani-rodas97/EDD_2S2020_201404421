@@ -35,7 +35,26 @@ bool ArbolABB::Buscar(int num)
         return false;
 }
 
+bool ArbolABB::BuscarPost(int num)
+{
+    int comparar = Post(this->getRaiz());
+    if (comparar == num)
+    {
+        return true;
+    }
+}
+
 ///Metodos privados
+
+int ArbolABB::Post(NodoAVL *padre)
+{
+    if(padre != 0)
+    {
+        Post(padre->getRamaIzq());
+        Post(padre->getRamaDer());
+        return padre->getInfo();
+    }
+}
 
 int ArbolABB::Revisar(NodoAVL *padre, int num)
 {
