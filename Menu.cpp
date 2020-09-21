@@ -1,7 +1,9 @@
 #include "Menu.h"
 #include <iostream>
 #include <string>
-#include <stdlib.h>
+#include <cstring>
+#include <cstdio>
+#include <cstdlib>
 #include "MatrizDisp.h"
 #include "ObjetoM.h"
 #include "Metodos.h"
@@ -30,6 +32,7 @@ int Menu::Principal(void)
     cout<<" \t|  4. Graficar proyectos                    |"<<endl;
     cout<<" \t|  5. Guardar proyectos                     |"<<endl;
     cout<<" \t|  6. Cargar librerias                      |"<<endl;
+    cout<<" \t|  7. Ver reportes                          |"<<endl;
     cout<<" \t|                                           |"<<endl;
     cout<<"\t ===========================================\n";
 
@@ -89,6 +92,14 @@ int Menu::Principal(void)
             menu.Opcion();
             break;
 
+        case 7:
+            system("start AVL.png");
+            system("start ABB.png");
+            cout << "3. Proyectos con mayor numero de niveles       Descendente  " << endl;
+            cout << "4. Proyectos con mayor numero de niveles       Ascendente  " << endl;
+            menu.Opcion();
+            break;
+
         default: cout<< "Ingrese un numero correcto" << endl;
 
     }
@@ -97,8 +108,11 @@ int Menu::Principal(void)
 int Menu::EditarProy(int Proy)
 {
     Menu menu;
+    Metodos metodo;
     LeerJson Archivos;
     int OpPrincipal, NumObj, NumNivel;
+    char Eli[100];
+    string Nivel;
     system("color 75");
     cout<<"\n\n\t ===========================================\n";
     cout<<"\t|              ELIJA UNA OPCION             |\n";
@@ -156,7 +170,7 @@ int Menu::EditarProy(int Proy)
             cin >> NumObj;
             if (Archivos.VerificarObj(NumObj) == true)
             {
-                Archivos.EliminarObjetos(NumObj);
+                Archivos.EliminarObjetos(Proy, 1, NumObj);
             }
             else
                 cout << "Numero de identificador incorrecto " << endl;
@@ -175,8 +189,11 @@ int Menu::EditarProy(int Proy)
             cout << "Que nivel desea eliminar " << endl;
             cin >> NumNivel;
 
+            Nivel = "Matriz" + metodo.ConvtirIntString(Proy) + metodo.ConvtirIntString(NumNivel) + ".png";
+            strcpy(Eli, Nivel.c_str());
+            remove(Eli);
+            cout << "Nivel eliminado exitosamente " << endl;
             menu.Opcion();
-
             break;
 
         case 10:

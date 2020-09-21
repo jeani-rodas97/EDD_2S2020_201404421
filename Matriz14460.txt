@@ -1,0 +1,3 @@
+digraph matriz{
+ node[shape=box color="#E85BB9" ranksep=0.2] 
+}

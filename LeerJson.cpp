@@ -7,6 +7,7 @@
 #include "ArbolABB.h"
 #include "MatrizDisp.h"
 #include "Lista.h"
+#include "ListaGlobal.h"
 //
 #include "json\json.h"
 #include "jsoncpp.cpp"
@@ -20,6 +21,7 @@
 using namespace std;
 ArbolAVL *AVL = new ArbolAVL();
 ArbolABB *ABB = new ArbolABB();
+ListaGlobal *LGeneral = new ListaGlobal();
 
 LeerJson::LeerJson()
 {
@@ -60,6 +62,7 @@ void LeerJson::RecibirArchivo()
             RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
             Lista *ListaNivel = new Lista();
+            LGeneral->NuevaLista(NumNombreProy, NumNivel, *ListaNivel);
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -161,7 +164,7 @@ void LeerJson::MostrarProy()
 
 bool LeerJson::VerificarProy(int proy)
 {
-    return AVL->Buscar(proy);
+    return AVL->BuscarPost(proy);
 }
 
 bool LeerJson::VerificarObj(int obj)
@@ -225,6 +228,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
             RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
             Lista *ListaNivel = new Lista();
+            LGeneral->NuevaLista(NumNombreProy, NumNivel, *ListaNivel);
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -317,9 +321,11 @@ void LeerJson::RecibirNivel(int NumNombreProy)
         }
 }
 
-void LeerJson::EliminarObjetos(int obj)
+void LeerJson::EliminarObjetos(int proy, int nivel, int obj)
 {
-    Lista ListaBuscar;
+    string dot;
     cout << "Usted va a eliminar el objeto " << obj;
-    ListaBuscar.Vacia();
+    /*dot = LGeneral->EliminarObj(proy, nivel, obj);
+    MatrizDisp *Mat = new MatrizDisp(proy, nivel);
+    Mat->GraficarMatriz(proy, nivel, dot); */
 }

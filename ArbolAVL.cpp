@@ -51,7 +51,7 @@ void ArbolAVL::inorden(NodoAVL *padre)
 
 bool ArbolAVL::Buscar(int num)
 {
-    int review = Revisar(this->getRaiz());
+    int review = Revisar(this->getRaiz(), num);
     if (review == num)
     {
         return true;
@@ -60,16 +60,53 @@ bool ArbolAVL::Buscar(int num)
         return false;
 }
 
+bool ArbolAVL::BuscarPost(int num)
+{
+    int comparar = Post(this->getRaiz());
+    if (comparar == num)
+    {
+        return true;
+    }
+}
+
 
 ///METODOS PRIVADOS
 
-int ArbolAVL::Revisar(NodoAVL *padre)
+int ArbolAVL::Post(NodoAVL *padre)
+{
+    if(padre != 0)
+    {
+        Post(padre->getRamaIzq());
+        Post(padre->getRamaDer());
+        return padre->getInfo();
+    }
+}
+
+int ArbolAVL::Revisar(NodoAVL *padre, int num)
 {
     if (padre != 0)
     {
-        Revisar(padre->getRamaIzq());
-        Revisar(padre->getRamaDer());
-        return padre->getInfo();
+        getOrden(padre->getRamaIzq(), num);
+
+        if (padre->getInfo() == num)
+        {
+            return padre->getInfo();
+        }
+
+        getOrden(padre->getRamaDer(), num);
+    }
+}
+
+int ArbolAVL::getOrden(NodoAVL *padre, int num)
+{
+    if (padre != 0)
+    {
+        getOrden(padre->getRamaIzq(), num);
+        getOrden(padre->getRamaDer(), num);
+        if (padre->getInfo() == num)
+        {
+            return padre->getInfo();
+        }
     }
 }
 
@@ -79,7 +116,7 @@ void ArbolAVL::orden(NodoAVL *padre)
     {
         orden(padre->getRamaIzq());
         orden(padre->getRamaDer());
-        cout << padre->getNombre() << endl;
+        cout << padre->getInfo() << ".  " << padre->getNombre() << endl;
     }
 }
 

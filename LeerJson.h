@@ -12,7 +12,7 @@ class LeerJson
         void MostrarProy();
         void RecibirLibreria();
         void MostrarObjetos();
-        void EliminarObjetos(int obj);
+        void EliminarObjetos(int proy, int nivel, int obj);
         void RecibirNivel(int NumNombreProy);
         bool VerificarProy(int proy);
         bool VerificarObj(int obj);

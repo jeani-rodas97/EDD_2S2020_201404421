@@ -13,13 +13,16 @@ class Lista
         string Recorrer();
         void NuevoObje(int proy, int nivel, int id, string nombre, string letra, string color, int posX, int posY);
         int Vacia();
-        Lista *Buscar(int proy);
+        bool BuscarProy(int proy);
+        bool BuscarNivel(int proy, int nivel);
+        string EliminarObjeto(int proy, int nivel, int idO);
 
     protected:
 
     private:
         Nodo *Inicio;
         Nodo *Fin;
+        Nodo *Sig;
         int Cant;
 };
 

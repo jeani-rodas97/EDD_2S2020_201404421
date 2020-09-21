@@ -2,5 +2,19 @@ digraph arbolAVL{
  rankdir=TB; 
  label = "AVL" 
  node [shape = circle, style=filled, color="#F76B11", fillcolor= "#F7C4F5" ]; 
-902
+754
+796->754
+830
+796->830
+902->796
+912
+931->912
+902->931
+1113->902
+1219
+1228->1219
+1446
+1476->1446
+1228->1476
+1113->1228
 } 

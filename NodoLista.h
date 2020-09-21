@@ -6,15 +6,16 @@
 class NodoLista
 {
     public:
-        NodoLista(int Proy, int Nivel);
-
+        NodoLista(int Proy);
+        void NuevoNivel(int Nivel, Lista *Niv);
+        Lista *ListaNivel;
     protected:
 
     private:
         int Proy;
         int Nivel;
         NodoLista *Siguiente;
-        Lista *ListaNivel;
+
 };
 
 #endif // NODOLISTA_H

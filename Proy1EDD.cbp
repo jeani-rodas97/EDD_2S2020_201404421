@@ -45,6 +45,8 @@
 		<Unit filename="Lista.h" />
 		<Unit filename="ListaCab.cpp" />
 		<Unit filename="ListaCab.h" />
+		<Unit filename="ListaGlobal.cpp" />
+		<Unit filename="ListaGlobal.h" />
 		<Unit filename="MatrizDisp.cpp" />
 		<Unit filename="MatrizDisp.h" />
 		<Unit filename="Menu.cpp" />

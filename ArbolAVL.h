@@ -17,6 +17,7 @@ class ArbolAVL
         void NuevoNodo(int numero, string cadena);
         void GraficarArbol(NodoAVL *padre);
         void inorden(NodoAVL *padre);
+        bool BuscarPost(int num);
 
     protected:
 
@@ -29,7 +30,9 @@ class ArbolAVL
         NodoAVL *RotIzqIzq(NodoAVL *a, NodoAVL *b);
         string Recorrer(NodoAVL *padre);
         void orden(NodoAVL *padre);
-        int Revisar(NodoAVL *padre);
+        int Revisar(NodoAVL *padre, int num);
+        int getOrden(NodoAVL *padre, int num);
+        int Post(NodoAVL *padre);
 
 
 };
