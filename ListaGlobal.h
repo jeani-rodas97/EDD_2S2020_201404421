@@ -1,20 +1,21 @@
 #ifndef LISTAGLOBAL_H
 #define LISTAGLOBAL_H
-#include "NodoLista.h"
 #include <string>
 
 class ListaGlobal
 {
     public:
         ListaGlobal();
-        void NuevaLista(int proy, int nivel, Lista Nuevo);
-        string EliminarObj(int Proy, int Nivel, int Id);
+        void NuevoNivel(int proy, int nivel);
+
 
     protected:
 
     private:
-        NodoLista *Root;
-        NodoLista *Last;
+        int Cant;
+        int proy;
+        int nivel;
+
 };
 
 #endif // LISTAGLOBAL_H

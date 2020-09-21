@@ -27,7 +27,7 @@
 	<string>
 	"ObjetoM.h"
 
-1600663028 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1600665065 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
@@ -173,14 +173,14 @@
 	<iostream>
 	<string>
 
-1600614458 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.cpp
+1600664131 source:c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.cpp
 	"ArbolABB.h"
 	"Metodos.h"
 	<iostream>
 	<fstream>
 	<stdlib.h>
 
-1600614434 c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.h
+1600664131 c:\users\jeany\documents\archivosc++\proy1edd\arbolabb.h
 	<string>
 	"NodoAVL.h"
 
@@ -214,11 +214,16 @@
 1600659634 c:\users\jeany\documents\archivosc++\proy1edd\nodolista.h
 	"Lista.h"
 
-1600659619 source:c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.cpp
+1600665044 source:c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.cpp
 	"ListaGlobal.h"
 	"Lista.h"
 
-1600651085 c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.h
-	"NodoLista.h"
+1600666460 c:\users\jeany\documents\archivosc++\proy1edd\listaglobal.h
 	<string>
+
+1600665460 c:\users\jeany\documents\archivosc++\proy1edd\nodofinal.h
+	<string>
+
+1600665460 source:c:\users\jeany\documents\archivosc++\proy1edd\nodofinal.cpp
+	"NodoFinal.h"
 

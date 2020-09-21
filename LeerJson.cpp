@@ -62,7 +62,7 @@ void LeerJson::RecibirArchivo()
             RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
             Lista *ListaNivel = new Lista();
-            LGeneral->NuevaLista(NumNombreProy, NumNivel, *ListaNivel);
+
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)
@@ -228,7 +228,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
             RecorrerList = "";
             MatrizDisp *MatrizNivel = new MatrizDisp(NumNombreProy, NumNivel);
             Lista *ListaNivel = new Lista();
-            LGeneral->NuevaLista(NumNombreProy, NumNivel, *ListaNivel);
+
                 ///Estoy en paredes
             const Json::Value& paredes = nivel[j]["paredes"];
             for (int k = 0; k < paredes.size(); k++)

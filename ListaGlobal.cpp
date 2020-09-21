@@ -3,21 +3,12 @@
 
 ListaGlobal::ListaGlobal()
 {
-    this->Root = 0;
-    this->Last = 0;
+
 }
 
-void ListaGlobal::NuevaLista(int proy, int nivel, Lista Nuevo)
+void ListaGlobal::NuevoNivel(int proy, int nivel)
 {
-    if(this->Root == 0)
-    {
-        this->Root = new NodoLista(proy);
-        this->Last = new NodoLista(proy);
-    }
-}
-
-string ListaGlobal::EliminarObj(int Proy, int Nivel, int Id)
-{
-    string graf;
-    graf = this->Root->ListaNivel->EliminarObjeto(Proy, Nivel, Id);
+    this->proy = proy;
+    this->nivel = nivel;
+    this->Cant = 0;
 }
