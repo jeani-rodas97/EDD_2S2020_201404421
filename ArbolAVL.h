@@ -13,8 +13,9 @@ class ArbolAVL
         ArbolAVL();
         NodoAVL *getRaiz();
         void setRaiz(NodoAVL *root);
-        bool Buscar(int num);
+        int Buscar(NodoAVL *padre, int num);
         void NuevoNodo(int numero, string cadena);
+        void BorrarNodo(NodoAVL *padre, int num);
         void GraficarArbol(NodoAVL *padre);
         void inorden(NodoAVL *padre);
         bool BuscarPost(int num);
@@ -24,10 +25,12 @@ class ArbolAVL
     private:
         NodoAVL *Raiz;
         NodoAVL *InsertarEnAVL(NodoAVL *raiz, int Valor, string Nombre, bool &AlturaEsMayor);
+        NodoAVL *BorrarEnAVL(NodoAVL *raiz, int Valor, bool &AlturaEsMayor);
         NodoAVL *RotDerIzq(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotDerDer(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotIzqDer(NodoAVL *a, NodoAVL *b);
         NodoAVL *RotIzqIzq(NodoAVL *a, NodoAVL *b);
+        NodoAVL *BuscarIzquierda(NodoAVL *nodo);
         string Recorrer(NodoAVL *padre);
         void orden(NodoAVL *padre);
         int Revisar(NodoAVL *padre, int num);

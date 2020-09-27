@@ -7,15 +7,21 @@ class ListaGlobal
 {
     public:
         ListaGlobal();
-        void NuevoNivel(int proy, int nivel);
+        void NuevoNivel(int proy, int nivel, Lista *obj);
         void MostrarNivel(int proy);
+        bool ExisteNiv(int nivel);
+        NodoNivel *BuscarNivel(int nivel);
+        int RetornarNivel(int proy);
+        int CantNivel;
+
 
 
     protected:
 
     private:
         NodoNivel *Inicio, *Final;
-        int Cant;
+        //int CantNivel;
+        bool Vacia();
 
 };
 

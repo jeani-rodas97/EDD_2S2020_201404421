@@ -7,3 +7,4 @@ Nodo::Nodo(int proy, int nivel, int id, string nombre, string letra, string colo
     this->Objeto = new ObjABB(proy, nivel, id, nombre, letra, color, posX, posY);
     this->Siguiente = 0;
 }
+

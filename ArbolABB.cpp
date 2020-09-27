@@ -24,15 +24,39 @@ void ArbolABB::NuevoNodo(int numero, string nombre)
     this->Raiz = InsertarEnABB(this->getRaiz(), numero, nombre);
 }
 
-bool ArbolABB::Buscar(int num)
+void ArbolABB::BorrarNodo(NodoAVL* padre ,int num)
 {
-    int review = Revisar(this->getRaiz(), num);
-    if (review == num)
+    if (padre == 0)
     {
-        return true;
+        cout << "El arbol de objetos ABB esta vacio " << endl;
     }
     else
-        return false;
+        //this->setRaiz(BorrarEnABB(this->getRaiz(), num));
+        this->Raiz = BorrarEnABB(this->getRaiz(), num);
+        //this->getRaiz() = BorrarEnABB(padre, num);
+}
+
+int ArbolABB::Buscar(NodoAVL *padre, int num)
+{
+    int objNum = 0;
+    if(padre == 0)
+    {
+        return objNum;
+    }
+
+    if(num < padre->getInfo())
+    {
+        objNum = Buscar(padre->getRamaIzq(), num);
+    }
+    else if (num >padre->getInfo())
+    {
+        objNum = Buscar(padre->getRamaDer(), num);
+    }
+    else
+    {
+        objNum = padre->getInfo();
+    }
+    return objNum;
 }
 
 bool ArbolABB::BuscarPost(int num)
@@ -97,6 +121,67 @@ NodoAVL* ArbolABB::InsertarEnABB(NodoAVL *raiz, int Valor, string Nombre)
     }
     return raiz;
 
+}
+
+NodoAVL* ArbolABB::BorrarEnABB(NodoAVL *raiz, int Valor)
+{
+    if (raiz == 0)                      //Arbol vacio
+    {
+        cout << "Arbol vacio "<< endl;
+    }
+    else if (Valor < raiz->getInfo())   //Nos vamos por la rama izquierda
+    {
+        NodoAVL *auxIzq;
+        auxIzq = BorrarEnABB(raiz->getRamaIzq(), Valor);
+        raiz->setRamaIzq(auxIzq);
+    }
+    else if (Valor > raiz->getInfo())   //Nos vamos por la rama derecha
+    {
+        NodoAVL *auxDer;
+        if(raiz)
+        auxDer = BorrarEnABB(raiz->getRamaDer(), Valor);
+        raiz->setRamaDer(auxDer);
+    }
+    else
+    {
+        NodoAVL *aux = raiz;
+        if (aux->getRamaIzq() == 0)
+        {
+            raiz = aux->getRamaDer();
+            //aux->setRamaDer(aux);
+        }
+        else if (aux->getRamaDer() == 0)
+        {
+            raiz = aux->getRamaIzq();
+        }
+        else
+        {
+            aux = Eliminar(aux);
+        }
+        aux == 0;
+    }
+    return raiz;
+}
+
+NodoAVL* ArbolABB::Eliminar(NodoAVL *encontrado)
+{
+    NodoAVL *padre = encontrado;
+    NodoAVL *hijo = encontrado->getRamaIzq();
+    while(hijo->getRamaDer() != 0)
+    {
+        padre = hijo;
+        hijo = hijo->getRamaDer();
+    }
+    encontrado->setInfo(hijo->getInfo());
+    if(padre == encontrado)
+    {
+        padre->setRamaIzq(hijo->getRamaIzq());
+    }
+    else
+    {
+        padre->setRamaDer(hijo->getRamaIzq());
+    }
+    return hijo;
 }
 
 void ArbolABB::GraficarArbol(NodoAVL *padre)

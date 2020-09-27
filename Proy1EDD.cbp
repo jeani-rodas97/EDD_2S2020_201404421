@@ -35,10 +35,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AlmacenProy.cpp" />
+		<Unit filename="AlmacenProy.h" />
 		<Unit filename="ArbolABB.cpp" />
 		<Unit filename="ArbolABB.h" />
 		<Unit filename="ArbolAVL.cpp" />
 		<Unit filename="ArbolAVL.h" />
+		<Unit filename="ContNiv.cpp" />
+		<Unit filename="ContNiv.h" />
 		<Unit filename="LeerJson.cpp" />
 		<Unit filename="LeerJson.h" />
 		<Unit filename="Lista.cpp" />
@@ -67,6 +71,10 @@
 		<Unit filename="ObjABB.h" />
 		<Unit filename="ObjetoM.cpp" />
 		<Unit filename="ObjetoM.h" />
+		<Unit filename="Proyecto.cpp" />
+		<Unit filename="Proyecto.h" />
+		<Unit filename="ReporteProy.cpp" />
+		<Unit filename="ReporteProy.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -25,6 +25,18 @@ void ArbolAVL::NuevoNodo(int numero, string nombre)
     bool Altura = false;
     this->Raiz = InsertarEnAVL(this->getRaiz(), numero, nombre, Altura);
 }
+
+void ArbolAVL::BorrarNodo(NodoAVL *padre, int num)
+{
+    bool Altura = false;
+    if (padre == 0)
+    {
+        cout << "El arbol de proyectos AVL esta vacio " << endl;
+    }
+    else
+        this->Raiz = BorrarEnAVL(padre, num, Altura);
+}
+
 void ArbolAVL::GraficarArbol(NodoAVL *padre)
 {
     string dot;
@@ -49,15 +61,27 @@ void ArbolAVL::inorden(NodoAVL *padre)
     }
 }
 
-bool ArbolAVL::Buscar(int num)
+int ArbolAVL::Buscar(NodoAVL *padre, int num)
 {
-    int review = Revisar(this->getRaiz(), num);
-    if (review == num)
+    int proy = 0;
+    if (padre == 0)
     {
-        return true;
+        return proy;
+    }
+
+    if (num < padre->getInfo())
+    {
+        proy = Buscar(padre->getRamaIzq(), num);
+    }
+    else if (num >padre->getInfo())
+    {
+        proy = Buscar(padre->getRamaDer(), num);
     }
     else
-        return false;
+    {
+        proy = padre->getInfo();
+    }
+    return proy;
 }
 
 bool ArbolAVL::BuscarPost(int num)
@@ -238,6 +262,114 @@ NodoAVL* ArbolAVL::InsertarEnAVL(NodoAVL *raiz, int Valor, string Nombre, bool &
     return raiz;
 }
 
+NodoAVL* ArbolAVL::BorrarEnAVL(NodoAVL *raiz, int Valor, bool &AlturaEsMayor)
+{
+    NodoAVL *auxB;
+    if (raiz == 0)
+    {
+        cout << "Lo siento, no se pudo eliminar el proyecto " << endl;
+        return raiz;
+    }
+
+    if (Valor < raiz->getInfo())   //Nos vamos por la rama izquierda
+    {
+        NodoAVL *auxIzq;
+        auxIzq = BorrarEnAVL(raiz->getRamaIzq(), Valor, AlturaEsMayor);
+        raiz->setRamaIzq(auxIzq);
+
+        if(AlturaEsMayor == true)
+        {
+            if(raiz->getFactorEquilibrio() == -1)
+            {
+                auxB = raiz->getRamaIzq();
+                if(auxB->getFactorEquilibrio() == -1)
+                {
+                    raiz = RotIzqIzq(raiz, auxB);
+                }
+                else
+                {
+                    raiz = RotIzqDer(raiz, auxB);
+                }
+                AlturaEsMayor = false;
+            }
+            else if(raiz->getFactorEquilibrio() == 0)
+            {
+                raiz->setFactorEquilibrio(-1);
+            }
+            else if(raiz->getFactorEquilibrio() == +1)
+            {
+                raiz->setFactorEquilibrio(0);
+                AlturaEsMayor = false;
+            }
+        }
+    }
+    else if (Valor > raiz->getInfo())   //Nos vamos por la rama derecha
+    {
+        NodoAVL *auxDer;
+        if(raiz)
+        auxDer = BorrarEnAVL(raiz->getRamaDer(), Valor, AlturaEsMayor);
+        raiz->setRamaDer(auxDer);
+
+        if(AlturaEsMayor == true)
+        {
+            if(raiz->getFactorEquilibrio() == +1)
+            {
+                auxB = raiz->getRamaDer();
+                if(auxB->getFactorEquilibrio() == +1)
+                {
+                    raiz = RotDerDer(raiz, auxB);
+                }
+                else
+                {
+                    raiz = RotDerIzq(raiz, auxB);
+                }
+                AlturaEsMayor = false;
+            }
+            else if(raiz->getFactorEquilibrio() == 0)
+            {
+                raiz->setFactorEquilibrio(+1);
+            }
+            else if(raiz->getFactorEquilibrio() == -1)
+            {
+                raiz->setFactorEquilibrio(0);
+                AlturaEsMayor = false;
+            }
+        }
+
+    }
+    else
+    {
+        if((raiz->getRamaIzq() == 0) || (raiz->getRamaIzq() == 0))      //Estamos en un nodo HOJA
+        {
+            NodoAVL *aux = 0;
+            if (raiz->getRamaIzq() == 0)
+            {
+                aux = raiz->getRamaDer();
+            }
+            else
+            {
+                aux = raiz->getRamaIzq();
+            }
+            if(aux == 0)
+            {
+                aux = raiz;
+                raiz = 0;
+            }
+            else
+            {
+                raiz = aux;
+            }
+        }
+        else
+        {
+            NodoAVL *auxFinal = BuscarIzquierda(raiz->getRamaDer());
+            raiz->setRamaDer(BorrarEnAVL(raiz->getRamaDer(), Valor, AlturaEsMayor));
+        }
+    }
+
+    return raiz;
+}
+
 NodoAVL* ArbolAVL::RotDerIzq(NodoAVL *a, NodoAVL *b)
 {
     NodoAVL *aux;
@@ -330,4 +462,14 @@ NodoAVL* ArbolAVL::RotIzqIzq(NodoAVL *a, NodoAVL *b)
         b->setFactorEquilibrio(1);
     }
     return b;
+}
+
+NodoAVL* ArbolAVL::BuscarIzquierda(NodoAVL *nodo)
+{
+    NodoAVL *aux = nodo;
+    while(aux->getRamaIzq() != 0)
+    {
+        aux = aux->getRamaIzq();
+    }
+    return aux;
 }

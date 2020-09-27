@@ -36,6 +36,12 @@ int NodoAVL::getFactorEquilibrio()
 }
 
 //setters
+
+void NodoAVL::setInfo(int Info)
+{
+    this->Info = Info;
+}
+
 void NodoAVL::setRamaIzq(NodoAVL *n)
 {
     this->HijoIzquierdo = n;

@@ -84,6 +84,8 @@ int Menu::Principal(void)
             break;
 
         case 5:
+
+            cout << "Cant proy " << leerfile.CantProy() << endl;
             menu.Opcion();
             break;
 
@@ -96,6 +98,7 @@ int Menu::Principal(void)
             system("start AVL.png");
             system("start ABB.png");
             cout << "3. Proyectos con mayor numero de niveles       Descendente  " << endl;
+            leerfile.MostrarDescendente();
             cout << "4. Proyectos con mayor numero de niveles       Ascendente  " << endl;
             menu.Opcion();
             break;
@@ -146,6 +149,14 @@ int Menu::EditarProy(int Proy)
             break;
 
         case 3:
+            //Copy level
+            int NivCopy, NivPaste;
+            Archivos.MostrarNiveles(Proy);
+            cout << "Ingresa el numero de nivel que deseas copiar " << endl;
+            cin >> NivCopy;
+            cout << "Ingresa el numero de nivel desetino " << endl;
+            cin >> NivPaste;
+            Archivos.CopiarNiv(Proy, NivCopy, NivPaste);
             menu.Opcion();
 
             break;
@@ -172,6 +183,7 @@ int Menu::EditarProy(int Proy)
             if (Archivos.VerificarObj(NumObj) == true)
             {
                 Archivos.EliminarObjetos(Proy, 1, NumObj);
+                system("start ABB.png");
             }
             else
                 cout << "Numero de identificador incorrecto " << endl;
@@ -187,6 +199,7 @@ int Menu::EditarProy(int Proy)
             break;
 
         case 9:
+            Archivos.MostrarNiveles(Proy);
             cout << "Que nivel desea eliminar " << endl;
             cin >> NumNivel;
 
@@ -198,7 +211,15 @@ int Menu::EditarProy(int Proy)
             break;
 
         case 10:
-            menu.Opcion();
+            Archivos.MostrarProy();
+            cout << "Se eliminara el proyecto " << Proy << endl;
+            if (Archivos.VerificarProy(Proy) == true)
+            {
+                Archivos.EliminarProyecto(Proy);
+                system("start AVL.png");
+            }
+
+            menu.Principal();
 
             break;
 

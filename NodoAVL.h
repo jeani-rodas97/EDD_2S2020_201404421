@@ -13,6 +13,7 @@ class NodoAVL
         NodoAVL *getRamaDer();
         int getFactorEquilibrio();
         //void setNombre(string Nombre);
+        void setInfo(int Info);
         void setRamaIzq(NodoAVL *n);
         void setRamaDer(NodoAVL *n);
         void setFactorEquilibrio(int Valor);
