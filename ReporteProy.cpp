@@ -7,6 +7,7 @@ ReporteProy::ReporteProy()
 {
     this->Inicio = 0;
     this->Final = 0;
+    this->Cantidad = 0;
 }
 
 void ReporteProy::Nuevo(int proy, int CN, int CO)
@@ -16,6 +17,7 @@ void ReporteProy::Nuevo(int proy, int CN, int CO)
     {
         this->Inicio = agregar;
         this->Final = agregar;
+        this->Cantidad++;
         return;
     }
     else
@@ -23,40 +25,51 @@ void ReporteProy::Nuevo(int proy, int CN, int CO)
         this->Final->Sig = agregar;
         agregar->Ant = this->Final;
         Final = agregar;
+        this->Cantidad++;
         return;
     }
 }
 
-void ReporteProy::Ascendente(ContNiv *raiz)
+void ReporteProy::Ascendente(ContNiv *raiz, int num)
 {
-    ContNiv *aux = this->Inicio;
-    do{
-        if(aux->CantNiv < raiz->CantNiv)
+    if(num <= this->Cantidad)
+    {
+        ContNiv *aux = this->Inicio;
+        while(aux != 0)
         {
-            cout << "Proyecto " << aux->Proy << " con " << aux->CantNiv << " niveles " << endl;
-            int AuxNiv = aux->CantNiv;
-            aux->CantNiv = raiz->CantNiv;
-            raiz->CantNiv = AuxNiv;
+            if(aux->Sig != 0)
+            {
+                if(aux->CantNiv < raiz->CantNiv)
+                {
+                    cout << "Proyecto " << aux->Proy << " con " << aux->CantNiv << " niveles " << endl;
+                    //cout << "Proyecto " << raiz->Proy << " con " << raiz->CantNiv << " niveles " << endl;
 
+                }
+            }
+            aux = aux->Sig;
+            num++;
+            Ascendente(raiz->Sig, num);
         }
-        aux = aux->Sig;
-    }while (aux != this->Inicio);
-    Ascendente(raiz->Sig);
+    }
 }
 
 void ReporteProy::Recorrer()
 {
     ContNiv *aux = this->Inicio;
-    if (aux != 0)
+    while(aux != 0)
     {
-        do{
+        if(aux->Sig != 0)
+        {
             cout << "Proyecto " << aux->Proy << " con " << aux->CantNiv << " niveles " << endl;
-            aux = aux->Sig;
-        } while(aux != this->Inicio);
+        }
+        else
+            return;
+        aux = aux->Sig;
     }
+    return;
 }
 
 void ReporteProy::Reporte4()
 {
-    Ascendente(this->Inicio);
+    Ascendente(this->Inicio, 1);
 }

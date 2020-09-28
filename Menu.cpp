@@ -162,12 +162,31 @@ int Menu::EditarProy(int Proy)
             break;
 
         case 4:
+            int cantNiv;
+            cout << "Ingrese la cantidad de pisos que desea crear " << endl;
+            cin >> cantNiv;
+            Archivos.CrearNiveles(Proy, cantNiv);
             menu.Opcion();
 
             break;
 
         case 5:
+            int objeto, x, y;
+            Archivos.MostrarNiveles(Proy);
+            cout << "Seleccione el nivel donde se agregara el objeto  " << endl;
+            cin >> NumNivel;
+            cout << "\n";
             Archivos.MostrarObjetos();
+            cout << "Seleccione el objeto que desea agregar " << endl;
+            cin >> objeto;
+            cout << "\n";
+            cout << "Introduzca punto X " << endl;
+            cin >> x;
+            cout << "\n";
+            cout << "Introduzca punto Y " << endl;
+            cin >> y;
+            cout << "\n";
+            Archivos.AddObj(Proy, NumNivel, objeto, metodo.ConvtirIntString(objeto), x, y);
             menu.Opcion();
             break;
 

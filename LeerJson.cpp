@@ -10,6 +10,7 @@
 #include "ListaGlobal.h"
 #include "AlmacenProy.h"
 #include "ReporteProy.h"
+#include "ReporteNiv.h"
 //
 #include "json\json.h"
 #include "jsoncpp.cpp"
@@ -28,6 +29,11 @@ AlmacenProy *Proy = new AlmacenProy();
 ListaGlobal *ListNiveles = new ListaGlobal();
 Lista *ListaObj = new Lista();
 ReporteProy *RepProy = new ReporteProy();
+ReporteNiv *RepNiv = new ReporteNiv();
+
+
+int SumNiv, SumObj, SumVentanas, SumParedes;
+string dotNivel;
 
 
 LeerJson::LeerJson()
@@ -38,7 +44,6 @@ void LeerJson::RecibirArchivo()
 {
     ///C:\\Users\\Jeany\\Downloads\\Proy.json   Para que funcione, colocar sin comilas y doble slash inverso
     Metodos metodo;
-    int SumNiv, SumObj, SumVentanas, SumParedes;
     char rutJson[100];
     int NumNombreProy, Xinicial, Yinicial, Xfinal, Yfinal, NumNivel, id;
     string ColorNodo, nombre, letra, RecorrerList ;
@@ -181,6 +186,7 @@ void LeerJson::RecibirArchivo()
         }
         Proy->NuevoProy(NumNombreProy, ListNiveles);
         RepProy->Nuevo(NumNombreProy, SumNiv, SumObj);
+        RepNiv->Nuevo(NumNombreProy, NumNivel, SumParedes, SumVentanas, SumObj);
     }
     AVL->GraficarArbol(AVL->getRaiz());
 }
@@ -207,7 +213,57 @@ bool LeerJson::VerificarObj(int obj)
 
 void LeerJson::Niveles(int Proy)
 {
-    //LGeneral->MostrarNivel(Proy);
+    ListNiveles->MostrarNivel(Proy);
+}
+
+void LeerJson::CrearNiveles(int proyecto, int niv)
+{
+    int UltimoNivel;
+    UltimoNivel = ListNiveles->RetornarNivel(proyecto);
+    cout << "Crear niveles hasta " << UltimoNivel+niv << endl;
+    for(int i = UltimoNivel; i <= niv; i++)
+    {
+        cout << "creando nivel "<< endl;
+        dotNivel = "";
+        MatrizDisp *Nivel = new MatrizDisp(proyecto, i);
+        //Nivel->GraficarMatriz(proyecto, niv, dotNivel);
+        Nivel->NivelVacio(proyecto, i, dotNivel);
+    }
+}
+
+void LeerJson::AddObj(int proy, int nivel, int id, string letra, int posx, int posy)
+{
+    Metodos metodo;
+    char rutIn[100], rutDes[100], sy[100], rutImg[100];
+    string ruta, niv, neato, dot, linea, img, obj;
+    obj = metodo.ConvtirIntString(posx +1) + metodo.ConvtirIntString(posy+1) + " [style = filled, fillcolor=\"#FA8209\", shape = circle, height = 0.5  fixedsize=true label = \"" + letra + "\",pos=\"" + metodo.ConvtirIntString(posx +1) + ",-" + metodo.ConvtirIntString(posy +1) + "!\"] \n";
+    ruta = "Matriz" + metodo.ConvtirIntString(proy) + metodo.ConvtirIntString(nivel) + ".txt";
+    strcpy(rutIn, ruta.c_str());
+    ifstream NivOrigen(rutIn);
+    if(NivOrigen.is_open())
+    {
+        getline(NivOrigen, linea);
+        while(!NivOrigen.eof())
+        {
+            dot += linea;
+            dot += "\n";
+            getline(NivOrigen, linea);
+        }
+    }
+    NivOrigen.close();
+    dot += obj;
+    dot += "}";
+    ofstream NivDestino;
+    strcpy(rutDes, ruta.c_str());
+    NivDestino.open(rutDes, ios::out);
+    NivDestino << dot;
+    NivDestino.close();
+    neato = "neato " + ruta + " -Tpng -o " + "matriz" + metodo.ConvtirIntString(proy) + metodo.ConvtirIntString(nivel) +".png";
+    strcpy(sy, neato.c_str());
+    system(sy);
+    img = "start matriz" + metodo.ConvtirIntString(proy) + metodo.ConvtirIntString(nivel) +".png";
+    strcpy(rutImg, img.c_str());
+    system(rutImg);
 }
 
 void LeerJson::MostrarObjetos()
@@ -222,10 +278,14 @@ void LeerJson::MostrarNiveles(int proyecto)
 
 void LeerJson::MostrarDescendente()
 {
+    //
     RepProy->Recorrer();
     //cout << "Proyecto: " << Proy->MostrarProy() << " Nivel: " <<  ListNiveles->RetornarNivel(Proy->MostrarProy()) << endl;
-    //RepProy->Reporte4();
+    cout << "Reporte 4      ASCENDENTE " << endl;
+    RepProy->Reporte4();
 }
+
+
 
 void LeerJson::CopiarNiv(int proy, int copiar, int pegar)
 {
@@ -310,8 +370,9 @@ void LeerJson::RecibirNivel(int NumNombreProy)
     cin >> rutJson;
     ifstream ArchJson(rutJson, ifstream::binary);
     ReadJson.parse(ArchJson, dato);
-
+    SumNiv = SumObj = SumParedes = SumVentanas = 0;
     const Json::Value& nivel = dato["niveles"];
+    SumNiv = nivel.size();
         for (int j = 0; j < nivel.size(); j++)
         {
             NumNivel = nivel[j]["nivel"].asInt();
@@ -343,6 +404,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
                     for(int y = Yinicial; y <= Yfinal; y++)
                     {
                         cout << "creando " << Xinicial << " , " << y << endl;
+                        SumParedes++;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, Xinicial, y);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, Xinicial, y ), Xinicial, y);
                     }
@@ -351,6 +413,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
                 {
                     for (int x = Xinicial; x <= Xfinal; x++)
                     {
+                        SumParedes++;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 100, "Paredes", "P", ColorNodo, x, Yinicial);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "P", ColorNodo, x, Yinicial), x, Yinicial);
                     }
@@ -377,6 +440,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
                     for(int y = Yinicial; y <= Yfinal; y++)
                     {
                         cout << "creando " << Xinicial << " , " << y << endl;
+                        SumVentanas++;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, Xinicial, y);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, Xinicial, y ), Xinicial, y);
                     }
@@ -385,6 +449,7 @@ void LeerJson::RecibirNivel(int NumNombreProy)
                 {
                     for (int x = Xinicial; x <= Xfinal; x++)
                     {
+                        SumVentanas++;
                         ListaNivel->NuevoObje(NumNombreProy, NumNivel, 200, "Ventanas", "V", ColorNodo, x, Yinicial);
                         MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, "V", ColorNodo, x, Yinicial ), x, Yinicial);
                     }
@@ -405,13 +470,16 @@ void LeerJson::RecibirNivel(int NumNombreProy)
                     ListaNivel->NuevoObje(NumNombreProy, NumNivel, id, nombre, letra, ColorNodo, Xinicial, Yinicial);
                     MatrizNivel->InsertarObj(new ObjetoM(NumNombreProy, NumNivel, letra , ColorNodo, Xinicial, Yinicial ), Xinicial, Yinicial);
                 }
-
             }
             cout << ListaNivel->Vacia() << endl;
             RecorrerList  = ListaNivel->Recorrer();
             MatrizNivel->GraficarMatriz(NumNombreProy, NumNivel, RecorrerList);
             ListNiveles->NuevoNivel(NumNombreProy, NumNivel, ListaNivel);
         }
+
+        Proy->NuevoProy(NumNombreProy, ListNiveles);
+        RepProy->Nuevo(NumNombreProy, SumNiv, SumObj);
+        RepNiv->Nuevo(NumNombreProy, NumNivel, SumParedes, SumVentanas, SumObj);
 }
 
 void LeerJson::EliminarObjetos(int proy, int nivel, int obj)

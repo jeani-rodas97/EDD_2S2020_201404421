@@ -43,6 +43,8 @@
 		<Unit filename="ArbolAVL.h" />
 		<Unit filename="ContNiv.cpp" />
 		<Unit filename="ContNiv.h" />
+		<Unit filename="ContObj.cpp" />
+		<Unit filename="ContObj.h" />
 		<Unit filename="LeerJson.cpp" />
 		<Unit filename="LeerJson.h" />
 		<Unit filename="Lista.cpp" />
@@ -73,6 +75,8 @@
 		<Unit filename="ObjetoM.h" />
 		<Unit filename="Proyecto.cpp" />
 		<Unit filename="Proyecto.h" />
+		<Unit filename="ReporteNiv.cpp" />
+		<Unit filename="ReporteNiv.h" />
 		<Unit filename="ReporteProy.cpp" />
 		<Unit filename="ReporteProy.h" />
 		<Unit filename="main.cpp" />

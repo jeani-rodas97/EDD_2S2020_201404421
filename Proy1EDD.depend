@@ -5,7 +5,7 @@
 	<stdlib.h>
 	"Menu.h"
 
-1601189150 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
+1601264299 source:c:\users\jeany\documents\archivosc++\proy1edd\menu.cpp
 	"Menu.h"
 	<iostream>
 	<string>
@@ -27,7 +27,7 @@
 	<string>
 	"ObjetoM.h"
 
-1601195313 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
+1601264396 source:c:\users\jeany\documents\archivosc++\proy1edd\leerjson.cpp
 	"LeerJson.h"
 	<iostream>
 	<fstream>
@@ -40,13 +40,14 @@
 	"ListaGlobal.h"
 	"AlmacenProy.h"
 	"ReporteProy.h"
+	"ReporteNiv.h"
 	"json\json.h"
 	"jsoncpp.cpp"
 
-1601189213 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
+1601264259 c:\users\jeany\documents\archivosc++\proy1edd\leerjson.h
 	<string>
 
-1600591484 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
+1601264259 source:c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.cpp
 	"MatrizDisp.h"
 	<iostream>
 	<fstream>
@@ -58,7 +59,7 @@
 	"Lista.h"
 	"Nodo.h"
 
-1600591508 c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.h
+1601257326 c:\users\jeany\documents\archivosc++\proy1edd\matrizdisp.h
 	"ListaCab.h"
 	"ObjetoM.h"
 	"string"
@@ -260,10 +261,21 @@
 
 1601194189 c:\users\jeany\documents\archivosc++\proy1edd\contniv.h
 
-1601195313 c:\users\jeany\documents\archivosc++\proy1edd\reporteproy.h
+1601230527 c:\users\jeany\documents\archivosc++\proy1edd\reporteproy.h
 	"ContNiv.h"
 
-1601195321 source:c:\users\jeany\documents\archivosc++\proy1edd\reporteproy.cpp
+1601235746 source:c:\users\jeany\documents\archivosc++\proy1edd\reporteproy.cpp
 	"ReporteProy.h"
 	<iostream>
+
+1601237216 source:c:\users\jeany\documents\archivosc++\proy1edd\contobj.cpp
+	"ContObj.h"
+
+1601237216 c:\users\jeany\documents\archivosc++\proy1edd\contobj.h
+
+1601238311 source:c:\users\jeany\documents\archivosc++\proy1edd\reporteniv.cpp
+	"ReporteNiv.h"
+
+1601238336 c:\users\jeany\documents\archivosc++\proy1edd\reporteniv.h
+	"ContObj.h"
 

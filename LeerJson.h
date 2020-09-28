@@ -12,6 +12,8 @@ class LeerJson
         void RecibirArchivo();
         void RecibirNivel(int NumNombreProy);
         void RecibirLibreria();
+        void CrearNiveles(int proyecto, int niv);
+        void AddObj(int proy, int niv, int id, string letra, int posx, int posy);
         void MostrarProy();
         void MostrarObjetos();
         void MostrarNiveles(int proyecto);

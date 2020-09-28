@@ -13,6 +13,7 @@ class MatrizDisp
         MatrizDisp(int Proy, int Nivel);
         void InsertarObj(ObjetoM *objNuevo, int x, int y);
         void GraficarMatriz(int Proyecto, int Nivel, string recorrido);
+        void NivelVacio(int Proyecto, int Nivel, string recorrido);
 
         int getProyecto();
         int getNivel();

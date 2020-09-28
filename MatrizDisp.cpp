@@ -49,6 +49,25 @@ void MatrizDisp::InsertarObj(ObjetoM *objNuevo, int x, int y)
     }
 }
 
+void MatrizDisp::NivelVacio(int Proyecto, int Nivel, string recorrido)
+{
+    cout << "creando nuevo nivel " << Nivel+1<< " en " << Proyecto << endl;
+    Metodos metodo;
+    ofstream GrafMatriz;
+    char rut[100], sy[100];
+    string ruta, proy, niv, neato;
+    string dot = "digraph matriz{\n node[shape=box color=\"#E85BB9\" ranksep=0.2] \n";
+    dot += "}";
+    ruta = "Matriz" + metodo.ConvtirIntString(Proyecto) + metodo.ConvtirIntString(Nivel) + ".txt";
+    strcpy(rut, ruta.c_str());
+    GrafMatriz.open(rut, ios::out);
+    GrafMatriz << dot;
+    GrafMatriz.close();
+    neato = "neato " + ruta + " -Tpng -o " + "matriz" + metodo.ConvtirIntString(Proyecto) + metodo.ConvtirIntString(Nivel) +".png";
+    strcpy(sy, neato.c_str());
+    system(sy);
+}
+
 void MatrizDisp::GraficarMatriz(int Proyecto, int Nivel, string recorrido)
 {
     Metodos metodo;
